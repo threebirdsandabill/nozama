@@ -1,2 +1,15 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+body {
+  padding-top: 60px;
+}
+
+.card {
+  background-color: #ffffff;
+  box-shadow: 0 0 20px 5px #ececec;
+  margin: 10px;
+  min-height: 218px;
+  padding: 10px;
+  text-align: center;
+}

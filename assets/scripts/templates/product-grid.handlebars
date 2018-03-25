@@ -1,0 +1,15 @@
+{{#if items}}
+  <div class="row">
+    {{#each items as |item|}}
+      <div class="col-sm-4 col-xs-6 col-md-3 item">
+        <div class="card">
+          <strong>{{name}}</strong><br> {{Description}}
+          <br> {{Price}}
+        </div>
+      </div>
+
+    {{/each}}
+  </div>
+{{else}}
+  <div class="message">No items</div>
+{{/if}}
