@@ -49,9 +49,6 @@ const onSignInFailure = function () {
 }
 
 const onSignOutSuccess = function () {
-  $('#signInForm').toggle() // this to ffs
-  $('.navbar').toggle()
-  $('.main-section').toggle()
   $.toast({
     text: "You're now logged out!",
     heading: 'See you next time',
@@ -64,15 +61,6 @@ const onSignOutSuccess = function () {
     textAlign: 'left',
     loader: true,
     loaderBg: '#9EC600'
-  })
-}
-
-const onToSignUp = function () {
-  $('.sign-in-form').toggle()
-  $('.sign-up-form').toggle()
-  $('.sign-up-error').css('display', 'none')
-  $('#signInForm').each(function () {
-    this.reset()
   })
 }
 
@@ -92,7 +80,7 @@ const onSignUpSuccess = function () {
   })
   $('#signUpModal').modal('hide')
 
-  $('.signUpForm').each(function () {
+  $('#signUpForm').each(function () {
     this.reset()
   })
 }
@@ -162,7 +150,6 @@ module.exports = {
   onSignInSuccess,
   onSignUpSuccess,
   onToSignIn,
-  onToSignUp,
   onSignInFailure,
   onSignUpFailure,
   onSignOutSuccess,
