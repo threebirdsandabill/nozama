@@ -3,6 +3,8 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~jquery-toast-plugin/src/jquery.toast.css';
 @import './theme.scss';
 
+@import url(https://use.fontawesome.com/releases/v5.0.8/css/all.css);
+
 body {
   padding-top: 60px;
 }

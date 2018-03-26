@@ -1,7 +1,7 @@
 'use strict'
 
-const tempItemSamples = require('./tempItemSamples')
 const authEvents = require('./auth/events.js')
+const appEvents = require('./app/events.js')
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
 
@@ -10,6 +10,6 @@ const authEvents = require('./auth/events.js')
 
 $(() => {
   // your JS code goes here
-  tempItemSamples.tempItems()
+  appEvents.onShowItems()
   authEvents.addHandlers()
 })
