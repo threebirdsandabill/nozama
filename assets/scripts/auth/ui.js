@@ -1,9 +1,7 @@
 'use strict'
 
 const store = require('../store')
-// require('../../../node_modules/jquery-toast-plugin/src/jquery.toast.js')
 require('jquery-toast-plugin')
-// require('../../../node_modules/jquery-toast-plugin/src/jquery.toast.css')
 
 const onSignInSuccess = function (data) {
   $.toast({
@@ -105,15 +103,6 @@ const onSignUpFailure = function () {
   })
 }
 
-const onToSignIn = function () {
-  $('.sign-in-form').toggle()
-  $('.sign-up-form').toggle()
-  $('.sign-in-error').css('display', 'none')
-  $('#signUpForm').each(function () {
-    this.reset()
-  })
-}
-
 const onChangePasswordSuccess = function () {
   $('#changePasswordModal').modal('hide')
   $.toast({
@@ -153,7 +142,6 @@ const onChangePasswordFailure = function () {
 module.exports = {
   onSignInSuccess,
   onSignUpSuccess,
-  onToSignIn,
   onSignInFailure,
   onSignUpFailure,
   onSignOutSuccess,
