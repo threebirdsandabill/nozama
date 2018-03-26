@@ -6,13 +6,9 @@ require('jquery-toast-plugin')
 // require('../../../node_modules/jquery-toast-plugin/src/jquery.toast.css')
 
 const onSignInSuccess = function (data) {
-  $('#signInForm').toggle()
-  $('.sign-in-error').css('display', 'none')
-  $('.navbar').toggle()
-  $('.main-section').toggle()
   $.toast({
     text: "You're now logged in!",
-    heading: 'Welcome to Crew',
+    heading: 'Welcome to Nozama',
     icon: 'success',
     showHideTransition: 'plain',
     allowToastClose: true,
@@ -23,15 +19,32 @@ const onSignInSuccess = function (data) {
     loader: true,
     loaderBg: '#9EC600'
   })
+  $('#signInModal').modal('hide')
 
   $('#signInForm').each(function () {
     this.reset()
   })
   store.user = data.user
+
+  $('.change-password').css('display', 'block')
+  $('.sign-in').css('display', 'none')
+  $('.sign-up').css('display', 'none')
 }
 
 const onSignInFailure = function () {
-  $('.sign-in-error').css('display', 'block')
+  $.toast({
+    text: 'Sorry, there was a problem signing in. Please check your creds',
+    heading: 'Error',
+    icon: 'error',
+    showHideTransition: 'plain',
+    allowToastClose: true,
+    hideAfter: 3000,
+    stack: 5,
+    position: 'top-right',
+    textAlign: 'left',
+    loader: true,
+    loaderBg: '#9EC600'
+  })
 }
 
 const onSignOutSuccess = function () {

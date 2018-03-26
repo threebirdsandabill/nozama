@@ -15,9 +15,23 @@ const onSignUp = function (event) { // TODO I want to make it so that it automat
     .catch(ui.onSignUpFailure)
 }
 
+const onShowSignInModal = function () {
+  $('#signInModal').modal('show')
+}
+
+const onSignIn = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  api.signIn(data)
+    .then(ui.onSignInSuccess)
+    .catch(ui.onSignInFailure)
+}
+
 const addHandlers = () => {
   $('#signUp').on('click', onShowSignUpModal)
   $('#signUpForm').on('submit', onSignUp)
+  $('#signIn').on('click', onShowSignInModal)
+  $('#signInForm').on('submit', onSignIn)
 }
 
 module.exports = {
