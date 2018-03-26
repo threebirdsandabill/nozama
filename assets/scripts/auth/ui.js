@@ -49,9 +49,6 @@ const onSignInFailure = function () {
 }
 
 const onSignOutSuccess = function () {
-  $('#signInForm').toggle() // this to ffs
-  $('.navbar').toggle()
-  $('.main-section').toggle()
   $.toast({
     text: "You're now logged out!",
     heading: 'See you next time',
@@ -65,6 +62,10 @@ const onSignOutSuccess = function () {
     loader: true,
     loaderBg: '#9EC600'
   })
+  $('.change-password').css('display', 'none')
+  $('.sign-in').css('display', 'block')
+  $('.sign-up').css('display', 'block')
+  $('.sign-out').css('display', 'none')
 }
 
 const onToSignUp = function () {
