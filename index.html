@@ -28,6 +28,8 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="active">
+              <li><button class="btn btn-default pad-5 sign-up" id="signUp" type="submit">Sign Up</button></li>
+              <li><button class="btn btn-default pad-5 sign-in" id="singIn" type="submit">Sign In</button></li>
             <li><a href="#contact">Shopping cart:</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -39,5 +41,43 @@
 
       </div>
     </div>
+
+    <!-- Modals -->
+    <!-- Modal sign up -->
+    <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Sign up</h4>
+          </div>
+          <div class="modal-body">
+            <!--  Modal form -->
+            <form class="form-horizontal" id="signUpForm">
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+                <div class="col-sm-9">
+                  <input type="email" name="credentials[email]" class="form-control" id="signUpEmail" placeholder="Email">
+                </div>
+                <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+                <div class="col-sm-9">
+                  <input type="password" name="credentials[password]" class="form-control" id="signUpPassword" placeholder="Password">
+                </div>
+                <label for="inputPassword3" class="col-sm-3 control-label">Confirm Password</label>
+                <div class="col-sm-9">
+                  <input type="password" name="credentials[password_confirmation]" class="form-control" id="signUpPasswordConf" placeholder="Password">
+                </div>
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-default">Sign up</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
     </body>
 </html>
