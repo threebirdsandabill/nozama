@@ -12,4 +12,5 @@ $(() => {
   // your JS code goes here
   appEvents.onShowItems()
   authEvents.addHandlers()
+  appEvents.addHandlers()
 })

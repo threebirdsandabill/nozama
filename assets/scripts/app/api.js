@@ -14,6 +14,11 @@ const getItems = function (data) {
   })
 }
 
+const addToCart = function (data) {
+
+}
+
 module.exports = {
-  getItems
+  getItems,
+  addToCart
 }
