@@ -1,9 +1,7 @@
 'use strict'
 
 const store = require('../store')
-// require('../../../node_modules/jquery-toast-plugin/src/jquery.toast.js')
 require('jquery-toast-plugin')
-// require('../../../node_modules/jquery-toast-plugin/src/jquery.toast.css')
 
 const onSignInSuccess = function (data) {
   $.toast({
@@ -68,15 +66,6 @@ const onSignOutSuccess = function () {
   $('.sign-out').css('display', 'none')
 }
 
-const onToSignUp = function () {
-  $('.sign-in-form').toggle()
-  $('.sign-up-form').toggle()
-  $('.sign-up-error').css('display', 'none')
-  $('#signInForm').each(function () {
-    this.reset()
-  })
-}
-
 const onSignUpSuccess = function () {
   $.toast({
     text: 'Please sign in now!',
@@ -93,7 +82,7 @@ const onSignUpSuccess = function () {
   })
   $('#signUpModal').modal('hide')
 
-  $('.signUpForm').each(function () {
+  $('#signUpForm').each(function () {
     this.reset()
   })
 }
@@ -111,15 +100,6 @@ const onSignUpFailure = function () {
     textAlign: 'left',
     loader: true,
     loaderBg: '#9EC600'
-  })
-}
-
-const onToSignIn = function () {
-  $('.sign-in-form').toggle()
-  $('.sign-up-form').toggle()
-  $('.sign-in-error').css('display', 'none')
-  $('#signUpForm').each(function () {
-    this.reset()
   })
 }
 
@@ -162,8 +142,6 @@ const onChangePasswordFailure = function () {
 module.exports = {
   onSignInSuccess,
   onSignUpSuccess,
-  onToSignIn,
-  onToSignUp,
   onSignInFailure,
   onSignUpFailure,
   onSignOutSuccess,
