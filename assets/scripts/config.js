@@ -2,7 +2,7 @@
 
 let apiUrl
 const apiUrls = {
-  production: 'https://t3-nozama-api.herokuapp.com/',
+  production: 'https://t3-nozama-api.herokuapp.com',
   development: 'http://localhost:4741'
 }
 
