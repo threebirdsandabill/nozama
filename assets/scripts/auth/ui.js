@@ -29,6 +29,7 @@ const onSignInSuccess = function (data) {
   $('.change-password').css('display', 'block')
   $('.sign-in').css('display', 'none')
   $('.sign-up').css('display', 'none')
+  $('.sign-out').css('display', 'block')
 }
 
 const onSignInFailure = function () {
@@ -122,7 +123,7 @@ const onToSignIn = function () {
 }
 
 const onChangePasswordSuccess = function () {
-  $('#editUserSettings').modal('hide')
+  $('#changePasswordModal').modal('hide')
   $.toast({
     text: "Don't forget it now!",
     heading: 'Password changed successfully!',
@@ -136,10 +137,25 @@ const onChangePasswordSuccess = function () {
     loader: true,
     loaderBg: '#9EC600'
   })
+  $('#changePasswordForm').each(function () {
+    this.reset()
+  })
 }
 
 const onChangePasswordFailure = function () {
-  $('.change-password-error').css('display', 'block')
+  $.toast({
+    text: 'Sorry, there was a problem changing your password',
+    heading: 'Error',
+    icon: 'error',
+    showHideTransition: 'plain',
+    allowToastClose: true,
+    hideAfter: 3000,
+    stack: 5,
+    position: 'top-right',
+    textAlign: 'left',
+    loader: true,
+    loaderBg: '#9EC600'
+  })
 }
 
 module.exports = {
