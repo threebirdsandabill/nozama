@@ -62,6 +62,10 @@ const onSignOutSuccess = function () {
     loader: true,
     loaderBg: '#9EC600'
   })
+  $('.change-password').css('display', 'none')
+  $('.sign-in').css('display', 'block')
+  $('.sign-up').css('display', 'block')
+  $('.sign-out').css('display', 'none')
 }
 
 const onSignUpSuccess = function () {
