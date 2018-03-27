@@ -47,9 +47,21 @@ const changePassword = function (data) {
   })
 }
 
+const getUser = function () {
+  return $.ajax({
+    url: config.apiUrl + '/change-password/' + store.user._id,
+    method: 'GET',
+    headers: {
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   signOut,
-  changePassword
+  changePassword,
+  getUser
 }
