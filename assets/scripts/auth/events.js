@@ -61,7 +61,7 @@ const addHandlers = () => {
   $('#changePassword').on('click', onShowChangePasswordModal)
   $('#changePasswordForm').on('submit', onChangePassword)
   $('#signOut').on('click', onSignOut)
-  $('#signup-divert').on('click', onDivertSignUpModal)
+  $('#signUpDivert').on('click', onDivertSignUpModal)
 }
 
 module.exports = {
