@@ -8,6 +8,11 @@ const onShowSignUpModal = function () {
   $('#signUpModal').modal('show')
 }
 
+const onDivertSignUpModal = function () {
+  $('#signUpModal').modal('show')
+  $('#signInModal').modal('hide')
+}
+
 const onSignUp = function (event) { // TODO I want to make it so that it automatically signs in. I will look into it tonight
   event.preventDefault()
   const data = getFormFields(this)
@@ -56,6 +61,7 @@ const addHandlers = () => {
   $('#changePassword').on('click', onShowChangePasswordModal)
   $('#changePasswordForm').on('submit', onChangePassword)
   $('#signOut').on('click', onSignOut)
+  $('#signUpDivert').on('click', onDivertSignUpModal)
 }
 
 module.exports = {
