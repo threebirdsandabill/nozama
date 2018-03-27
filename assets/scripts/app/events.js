@@ -4,6 +4,7 @@ const store = require('../store')
 // const getFormFields = require('../../../lib/get-form-fields')
 const ui = require('./ui')
 const showCartTemplate = require('../templates/cart-populate.handlebars')
+const cart = require('./cart')
 
 const onShowItems = function () {
 //  event.preventDefault()
@@ -15,19 +16,20 @@ const onShowItems = function () {
 const onAddToCart = (event) => {
   event.preventDefault()
   if (store.user !== undefined) {
+    const itemId = $(event.target).data('btnitemid')
+    const itemQty = $('#qty_' + itemId).val()
     // set actionType so that the ui function knows what kind of message to give
-    const actionDescription = 'added'
-    // get cart items
-    let cartItems = store.user.cart
-    // find the one we're updating
-    // change the amount
-    // set the data variable to contain user and cart items
+    const actionDescription = ' added'
+
     const data = {
       'user': {
-        'cart': cartItems
+        'cart': cart.updateCartArray(itemId, itemQty, 'add')
       }
     }
+    //  const data = cart.updateCartArray(itemId, itemQty)
+    console.log('cart data is in onAddToCart', data)
     api.updateCart(data)
+
       .then(ui.updateCartSuccess(data, actionDescription))
       .catch(ui.updateCartFailure)
     // api.updateCart()
@@ -43,15 +45,12 @@ const onUpdateCartItemQty = (event) => {
   // set actionType so that the ui function knows what kind of message to give
   const actionDescription = 'updated'
   // get cart items
-  let cartItems = store.user.cart
-  // find the one we're updating
-  // change the amount
-  // set the data variable to contain user and cart items
-  const data = {
-    'user': {
-      'cart': cartItems
-    }
-  }
+  const itemId = '' // get itemid
+  const itemQty = '' // get qty
+
+  const data = cart.updateCartArray(itemId, itemQty, 'update')
+  console.log('cart data is onUpdateCartitemQty', data)
+
   api.updateCart(data)
     .then(ui.updateCartSuccess(data, actionDescription))
     .catch(ui.updateCartFailure)
@@ -59,19 +58,14 @@ const onUpdateCartItemQty = (event) => {
 
 const onRemoveCartItem = (event) => {
   event.preventDefault()
-
-  // set actionType so that the ui function knows what kind of message to give
-  const actionDescription = 'removed'
+  const actionDescription = 'updated'
   // get cart items
-  let cartItems = store.user.cart
-  // find the one we're updating
-  // change the amount
-  // set the data variable to contain user and cart items
-  const data = {
-    'user': {
-      'cart': cartItems
-    }
-  }
+  const itemId = '' // get itemid
+  const itemQty = '' // get qty
+
+  const data = cart.updateCartArray(itemId, itemQty)
+  console.log('cart data is onRemoveItem', data)
+
   api.updateCart(data)
     .then(ui.updateCartSuccess(data, actionDescription))
     .catch(ui.updateCartFailure)
