@@ -1,6 +1,6 @@
 'use strict'
 const config = require('../config')
-// const store = require('../store')
+const store = require('../store')
 
 const getItems = function (data) {
   // console.log('token is', store.user.token)
@@ -14,11 +14,19 @@ const getItems = function (data) {
   })
 }
 
-const addToCart = function (data) {
-
+const updateCart = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/users/' + data.id,
+    method: 'PATCH',
+    headers: {
+      contentType: 'application/json',
+      authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
 }
 
 module.exports = {
   getItems,
-  addToCart
+  updateCart
 }

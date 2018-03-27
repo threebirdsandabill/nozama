@@ -13,18 +13,73 @@ const onShowItems = function () {
 
 const onAddToCart = (event) => {
   event.preventDefault()
-  console.log('got here')
   if (store.user !== undefined) {
-    api.addToCart($(event.target).data('itemid'))
-      .then(ui.showAddToCart)
-      .catch(ui.generalFailure)
+    // set actionType so that the ui function knows what kind of message to give
+    const actionDescription = 'added'
+    // get cart items
+    let cartItems = store.user.cart
+    // find the one we're updating
+    // change the amount
+    // set the data variable to contain user and cart items
+    const data = {
+      'user': {
+        'cart': cartItems
+      }
+    }
+    api.updateCart(data)
+      .then(ui.updateCartSuccess(data, actionDescription))
+      .catch(ui.updateCartFailure)
+    // api.updateCart()
+    //   .then(ui.showAddToCart)
+    //   .catch(ui.generalFailure)
   } else {
     $('#signInModal').modal('show')
   }
 }
 
+const onUpdateCartItemQty = (event) => {
+  event.preventDefault()
+  // set actionType so that the ui function knows what kind of message to give
+  const actionDescription = 'updated'
+  // get cart items
+  let cartItems = store.user.cart
+  // find the one we're updating
+  // change the amount
+  // set the data variable to contain user and cart items
+  const data = {
+    'user': {
+      'cart': cartItems
+    }
+  }
+  api.updateCart(data)
+    .then(ui.updateCartSuccess(data, actionDescription))
+    .catch(ui.updateCartFailure)
+}
+
+const onRemoveCartItem = (event) => {
+  event.preventDefault()
+
+  // set actionType so that the ui function knows what kind of message to give
+  const actionDescription = 'removed'
+  // get cart items
+  let cartItems = store.user.cart
+  // find the one we're updating
+  // change the amount
+  // set the data variable to contain user and cart items
+  const data = {
+    'user': {
+      'cart': cartItems
+    }
+  }
+  api.updateCart(data)
+    .then(ui.updateCartSuccess(data, actionDescription))
+    .catch(ui.updateCartFailure)
+}
+
 const addHandlers = () => {
   $('body').on('click', '.btn-add-to-cart', onAddToCart)
+  // add event for updating cart item
+  // add event for removing cart item
 }
 
 const pageLoadEvents = () => {
@@ -35,5 +90,7 @@ module.exports = {
   addHandlers: addHandlers,
   pageLoadEvents: pageLoadEvents,
   onShowItems,
-  onAddToCart
+  onAddToCart,
+  onUpdateCartItemQty,
+  onRemoveCartItem
 }
