@@ -78,7 +78,6 @@ const onCartClickOpen = function () {
     .catch(ui.populateCartError)
 
   $('#addToCartModal').modal('show')
-
 }
 
 const addHandlers = () => {

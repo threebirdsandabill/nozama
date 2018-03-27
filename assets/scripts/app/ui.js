@@ -1,7 +1,8 @@
 'use strict'
 
 const showItemGrid = require('../templates/product-grid.handlebars')
-const  showCartTemplate = require('../templates/cart-populate.handlebars')
+const showCartTemplate = require('../templates/cart-populate.handlebars')
+const store = require('../store')
 
 const getItemsSucces = (data) => {
   console.log('data is', data)
