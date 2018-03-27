@@ -1,0 +1,53 @@
+{{#if items}}
+  <div class="cart-populate">
+    {{#each items as |item|}}
+    <div class="shopping-cart">
+      <div class="column-labels">
+        <label class="product-image">Image</label>
+        <label class="product-details">Product</label>
+        <label class="product-price">Price</label>
+        <label class="product-quantity">Quantity</label>
+        <label class="product-removal">Remove</label>
+        <label class="product-line-price">Total</label>
+      </div>
+      <!-- Dummy Product -->
+      <div class="product">
+        <div class="product-image">
+          <img src="https://s3.amazonaws.com/anna0312wdi/nozama-images/{{image}}" class="item-image-small">
+        </div>
+        <div class="product-details">
+          <div class="product-title">{{name}}</div>
+          <p class="product-description">{{description}}</p>
+        </div>
+        <div class="product-price">{{price}}</div>
+        <div class="form-group product-quantity">
+          <select id="qty_{{item.id}}" name="item[qty]" class="form-control" data-qtyitemid="{{item.id}}">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <div class="product-removal">
+          <button class="remove-product">
+            Remove
+          </button>
+        </div>
+        <div class="product-line-price"></div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+{{else}}
+  <div class="message">No items</div>
+{{/if}}
+<div class="totals">
+  <div class="totals-item totals-item-total">
+    <label>Grand Total</label>
+    <div class="totals-value" id="cart-total"></div>
+  </div>
+</div>
+
+<!--CHECKOUT BUTTON-->
+<button class="checkout">Checkout</button>

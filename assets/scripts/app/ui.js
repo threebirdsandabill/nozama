@@ -1,6 +1,8 @@
 'use strict'
 
 const showItemGrid = require('../templates/product-grid.handlebars')
+const showCartTemplate = require('../templates/cart-populate.handlebars')
+const store = require('../store')
 
 const getItemsSucces = (data) => {
   console.log('data is', data)
@@ -9,7 +11,7 @@ const getItemsSucces = (data) => {
 
 const updateCartSuccess = function (data, actionDescription) {
   $.toast({
-    text: 'Item' + actionDescription,
+    text: 'Item ' + actionDescription,
     heading: 'Cart updated',
     icon: 'success',
     showHideTransition: 'plain',
@@ -23,7 +25,14 @@ const updateCartSuccess = function (data, actionDescription) {
   })
 }
 
+const populateCart = function (data) {
+  console.log('data is', data)
+  const showCartHtml = showCartTemplate({ items: data.user.cart })
+  $('.cart-populate').html(showCartHtml)
+}
+
 module.exports = {
   getItemsSucces,
-  updateCartSuccess
+  updateCartSuccess,
+  populateCart
 }
