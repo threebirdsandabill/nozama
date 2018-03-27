@@ -49,7 +49,7 @@ const changePassword = function (data) {
 
 const getUser = function () {
   return $.ajax({
-    url: config.apiUrl + '/change-password/' + store.user._id,
+    url: config.apiUrl + '/users/' + store.user._id,
     method: 'GET',
     headers: {
       contentType: 'application/json',
