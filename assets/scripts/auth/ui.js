@@ -26,6 +26,7 @@ const onSignInSuccess = function (data) {
   console.log('user: ', store.user)
 
   $('.change-password').css('display', 'block')
+  $('.order-history').css('display', 'block')
   $('.sign-in').css('display', 'none')
   $('.sign-up').css('display', 'none')
   $('.sign-out').css('display', 'block')
@@ -62,6 +63,7 @@ const onSignOutSuccess = function () {
     loaderBg: '#9EC600'
   })
   $('.change-password').css('display', 'none')
+  $('.order-history').css('display', 'none')
   $('.sign-in').css('display', 'block')
   $('.sign-up').css('display', 'block')
   $('.sign-out').css('display', 'none')
