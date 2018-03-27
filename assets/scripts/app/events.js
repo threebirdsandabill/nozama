@@ -3,6 +3,7 @@ const api = require('./api')
 const store = require('../store')
 // const getFormFields = require('../../../lib/get-form-fields')
 const ui = require('./ui')
+const showCartTemplate = require('../templates/cart-populate.handlebars')
 const cart = require('./cart')
 
 const onShowItems = function () {
@@ -70,11 +71,15 @@ const onRemoveCartItem = (event) => {
     .catch(ui.updateCartFailure)
 }
 
+const onCartClickOpen = function () {
+  $('#addToCartModal').modal('show')
+  const showCartHtml = showCartTemplate({ items: store.user.cart })
+  $('.cart-populate').html(showCartHtml)
+}
+
 const addHandlers = () => {
   $('body').on('click', '.btn-add-to-cart', onAddToCart)
-  $('.cart-icon').click(function () {
-    $('#addToCartModal').modal('show')
-  })
+  $('.cart-icon').on('click', onCartClickOpen)
   // add event for updating cart item
   // add event for removing cart item
 }
