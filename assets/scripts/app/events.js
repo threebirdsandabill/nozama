@@ -78,6 +78,9 @@ const onRemoveCartItem = (event) => {
 
 const addHandlers = () => {
   $('body').on('click', '.btn-add-to-cart', onAddToCart)
+  $('.cart-icon').click(function () {
+    $('#addToCartModal').modal('show')
+  })
   // add event for updating cart item
   // add event for removing cart item
 }
