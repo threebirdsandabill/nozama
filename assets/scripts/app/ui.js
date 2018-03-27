@@ -1,6 +1,8 @@
 'use strict'
 
 const showItemGrid = require('../templates/product-grid.handlebars')
+const showCartTemplate = require('../templates/cart-populate.handlebars')
+const store = require('../store')
 
 const getItemsSucces = (data) => {
   console.log('data is', data)
@@ -23,7 +25,14 @@ const updateCartSuccess = function (data, actionDescription) {
   })
 }
 
+const onUserCartClick = function () {
+  $('#addToCartModal').modal('show')
+  const showCartHtml = showCartTemplate({ items: store.user.cart })
+  $('.cart-populate').html(showCartHtml)
+}
+
 module.exports = {
   getItemsSucces,
-  updateCartSuccess
+  updateCartSuccess,
+  onUserCartClick
 }

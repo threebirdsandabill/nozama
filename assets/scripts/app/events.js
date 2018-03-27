@@ -5,6 +5,7 @@ const store = require('../store')
 const ui = require('./ui')
 const showCartTemplate = require('../templates/cart-populate.handlebars')
 const cart = require('./cart')
+const authApi = require('../auth/api')
 
 const onShowItems = function () {
 //  event.preventDefault()
@@ -72,9 +73,8 @@ const onRemoveCartItem = (event) => {
 }
 
 const onCartClickOpen = function () {
-  $('#addToCartModal').modal('show')
-  const showCartHtml = showCartTemplate({ items: store.user.cart })
-  $('.cart-populate').html(showCartHtml)
+  authApi.getUser()
+    .then(ui.onUserCartClick)
 }
 
 const addHandlers = () => {
