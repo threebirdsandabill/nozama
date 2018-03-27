@@ -30,6 +30,7 @@
             <li class="active">
               <li><button class="btn btn-default pad-5 sign-out" id="signOut" type="submit">Sign Out</button></li>
               <li><button class="btn btn-default pad-5 change-password" id="changePassword" type="submit">Change password</button></li>
+              <li><button class="btn btn-default pad-5 order-history" id="orderHistory" type="submit">Order History</button></li>
               <li><button class="btn btn-default pad-5 sign-up" id="signUp" type="submit">Sign Up</button></li>
               <li><button class="btn btn-default pad-5 sign-in" id="signIn" type="submit">Sign In</button></li>
             <li><a href="#" class="cart-icon"><i class="fas fa-2x fa-shopping-cart cart-icon"></i></a></li>
@@ -194,6 +195,45 @@
                       </div>
                     </div>
                   </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Order History -->
+    <div class="modal fade" id="orderHistoryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h2 class="modal-title" id="myHistoryLabel">My Order History</h2>
+          </div>
+          <div class="modal-body">
+            <!--  Modal form -->
+            <form class="form-horizontal" id="orderHistoryForm">
+              <div class="form-group">
+                <table id="clientOrderHistory" class="table table-bordered nowrap">
+                  <thead>
+                    <tr>
+                      <th>Order #</th>
+                      <th>Item Name</th>
+                      <th>Item Description</th>
+                      <th>Item Quantity</th>
+                      <th>Item Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Dummy</td>
+                      <td>Dummy</td>
+                      <td>Dummy</td>
+                      <td>Dummy</td>
+                      <td>Dummy</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </form>
           </div>
