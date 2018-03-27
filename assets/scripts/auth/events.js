@@ -2,10 +2,16 @@
 
 const ui = require('./ui.js')
 const api = require('./api.js')
+const store = require('../store.js')
 const getFormFields = require('../../../lib/get-form-fields.js')
 
 const onShowSignUpModal = function () {
   $('#signUpModal').modal('show')
+}
+
+const onDivertSignUpModal = function () {
+  $('#signUpModal').modal('show')
+  $('#signInModal').modal('hide')
 }
 
 const onSignUp = function (event) { // TODO I want to make it so that it automatically signs in. I will look into it tonight
@@ -45,6 +51,8 @@ const onSignOut = function () {
   const data = getFormFields(this)
   api.signOut(data)
     .then(ui.onSignOutSuccess)
+    .then(() => { store.user = undefined })
+    .then(() => console.log('store user', store.user))
     .catch(ui.signOutFailure)
 }
 
@@ -56,6 +64,7 @@ const addHandlers = () => {
   $('#changePassword').on('click', onShowChangePasswordModal)
   $('#changePasswordForm').on('submit', onChangePassword)
   $('#signOut').on('click', onSignOut)
+  $('#signUpDivert').on('click', onDivertSignUpModal)
 }
 
 module.exports = {
