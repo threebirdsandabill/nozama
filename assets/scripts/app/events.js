@@ -74,7 +74,10 @@ const onRemoveCartItem = (event) => {
 
 const onCartClickOpen = function () {
   authApi.getUser()
-    .then(ui.onUserCartClick)
+    .then(ui.populateCart)
+    .catch(ui.populateCartError)
+
+  $('#addToCartModal').modal('show')
 }
 
 const addHandlers = () => {

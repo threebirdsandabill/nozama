@@ -25,14 +25,14 @@ const updateCartSuccess = function (data, actionDescription) {
   })
 }
 
-const onUserCartClick = function () {
-  $('#addToCartModal').modal('show')
-  const showCartHtml = showCartTemplate({ items: store.user.cart })
+const populateCart = function (data) {
+  console.log('data is', data)
+  const showCartHtml = showCartTemplate({ items: data.user.cart })
   $('.cart-populate').html(showCartHtml)
 }
 
 module.exports = {
   getItemsSucces,
   updateCartSuccess,
-  onUserCartClick
+  populateCart
 }
