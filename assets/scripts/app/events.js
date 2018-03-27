@@ -4,6 +4,7 @@ const store = require('../store')
 // const getFormFields = require('../../../lib/get-form-fields')
 const ui = require('./ui')
 const showCartTemplate = require('../templates/cart-populate.handlebars')
+const orderHistoryTemplate = require('../templates/order-history.handlebars')
 const cart = require('./cart')
 
 const onShowItems = function () {
@@ -79,6 +80,8 @@ const onCartClickOpen = function () {
 
 const displayOrderHistory = function () {
   $('#orderHistoryModal').modal('show')
+  const orderHistoryHtml = orderHistoryTemplate({ orders: store.user.orders }) // this part is basically dummy code!
+  $('.history-populate').html(orderHistoryHtml)
 }
 
 const addHandlers = () => {
