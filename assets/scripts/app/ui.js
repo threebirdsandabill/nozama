@@ -9,7 +9,7 @@ const getItemsSucces = (data) => {
 
 const updateCartSuccess = function (data, actionDescription) {
   $.toast({
-    text: 'Item' + actionDescription,
+    text: 'Item ' + actionDescription,
     heading: 'Cart updated',
     icon: 'success',
     showHideTransition: 'plain',
