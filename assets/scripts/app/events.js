@@ -18,15 +18,15 @@ const onAddToCart = (event) => {
     const itemId = $(event.target).data('btnitemid')
     const itemQty = $('#qty_' + itemId).val()
     // set actionType so that the ui function knows what kind of message to give
-    const actionDescription = 'added'
+    const actionDescription = ' added'
 
     const data = {
       'user': {
-        'cart': cart.updateCartArray(itemId, itemQty)
+        'cart': cart.updateCartArray(itemId, itemQty, 'add')
       }
     }
     //  const data = cart.updateCartArray(itemId, itemQty)
-    console.log('cart data is', data)
+    console.log('cart data is in onAddToCart', data)
     api.updateCart(data)
 
       .then(ui.updateCartSuccess(data, actionDescription))
@@ -47,8 +47,8 @@ const onUpdateCartItemQty = (event) => {
   const itemId = '' // get itemid
   const itemQty = '' // get qty
 
-  const data = cart.updateCartArray(itemId, itemQty)
-  console.log('cart data is', data)
+  const data = cart.updateCartArray(itemId, itemQty, 'update')
+  console.log('cart data is onUpdateCartitemQty', data)
 
   api.updateCart(data)
     .then(ui.updateCartSuccess(data, actionDescription))
@@ -63,7 +63,7 @@ const onRemoveCartItem = (event) => {
   const itemQty = '' // get qty
 
   const data = cart.updateCartArray(itemId, itemQty)
-  console.log('cart data is', data)
+  console.log('cart data is onRemoveItem', data)
 
   api.updateCart(data)
     .then(ui.updateCartSuccess(data, actionDescription))

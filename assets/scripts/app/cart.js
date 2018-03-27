@@ -2,28 +2,38 @@
 
 const store = require('../store')
 
-const updateCartArray = function (itemId, itemQty) {
-  console.log('qty', itemQty)
+const updateCartArray = function (itemId, itemQty, updateType) {
   let cartItems = store.user.cart
-  console.log('old cart items', cartItems)
-  // update items
-  // cartItems = [
-  //   {
-  //     itemId: '5ab9315c2acdda3b315668aa',
-  //     quantity: 1
-  //   },
-  //   {
-  //     itemId: '5ab9315c2acdda3b315668ab',
-  //     quantity: 1
-  //   }
-  // ]
-  const newItem = {
-    itemId: itemId,
-    itemQty: itemQty
+  console.log('in here with cart items of', cartItems)
+
+  const checkIfItemExists = function (itemId) {
+    for (let i = 0; i < cartItems.length; i++) {
+      console.log('value of itemId at loop is', cartItems[i].itemId)
+      console.log('cart items.length is', cartItems.length)
+      if (cartItems[i].itemId === itemId) {
+        return i
+      }
+    }
+    return -1
   }
-  cartItems.push(newItem)
-  console.log('new cart', cartItems)
-  return cartItems
+  const indexOfArray = checkIfItemExists(itemId)
+  console.log('index of array is ', indexOfArray)
+  if (indexOfArray === -1 || indexOfArray === undefined) {
+    console.log('in the if')
+    const newItem = {
+      itemId: itemId,
+      itemQty: itemQty
+    }
+    cartItems.push(newItem)
+    console.log('new cart', cartItems)
+    return cartItems
+  } else if (updateType === 'update') {
+    cartItems[indexOfArray].itemQty = itemQty
+    return cartItems
+  } else if (updateType === 'add') {
+    cartItems[indexOfArray].itemQty = parseInt(cartItems[indexOfArray].itemQty) + parseInt(itemQty)
+    return cartItems
+  }
 }
 
 module.exports = {
