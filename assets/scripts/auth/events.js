@@ -2,6 +2,7 @@
 
 const ui = require('./ui.js')
 const api = require('./api.js')
+const store = require('../store.js')
 const getFormFields = require('../../../lib/get-form-fields.js')
 
 const onShowSignUpModal = function () {
@@ -50,6 +51,8 @@ const onSignOut = function () {
   const data = getFormFields(this)
   api.signOut(data)
     .then(ui.onSignOutSuccess)
+    .then(() => { store.user = undefined })
+    .then(() => console.log('store user', store.user))
     .catch(ui.signOutFailure)
 }
 

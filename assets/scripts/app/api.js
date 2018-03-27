@@ -15,8 +15,9 @@ const getItems = function (data) {
 }
 
 const updateCart = function (data) {
+  console.log('store is', store)
   return $.ajax({
-    url: config.apiUrl + '/users/' + data.id,
+    url: config.apiUrl + '/users/' + store.user.id,
     method: 'PATCH',
     headers: {
       contentType: 'application/json',
