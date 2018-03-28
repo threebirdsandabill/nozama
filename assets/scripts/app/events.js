@@ -198,8 +198,8 @@ const displayOrderHistory = function () {
 const addHandlers = () => {
   // $('body').on('click', '.btn-add-to-cart', onAddToCart)
   // $('.cart-icon').on('click', onCartClickOpen)
-  // $('body').on('click', '#purchaseButton', onPurchaseClick) // TODO link this with handlebars template
-  $('#purchaseButton').on('click', onPurchaseClick)
+  $('body').on('click', '#checkout', onPurchaseClick) // TODO link this with handlebars template
+  // $('#purchaseButton').on('click', onPurchaseClick)
   $('body').on('click', '.btn-add-to-cart', onAddToCart)
   $('.cart-icon').on('click', onCartClickOpen)
   $('.get-user').on('click', onGetUserCart)
@@ -212,7 +212,7 @@ const addHandlers = () => {
 
 module.exports = {
   addHandlers: addHandlers,
-  pageLoadEvents: pageLoadEvents,
+  // pageLoadEvents: pageLoadEvents,
   onShowItems,
   onAddToCart,
   onUpdateCartItemQty,
