@@ -8,7 +8,6 @@ const store = require('../store')
 const cart = require('./cart')
 
 const getItemsSucces = (data) => {
-  console.log('data is', data)
   $('#store-items').html(showItemGrid({ items: data.items }))
 }
 
@@ -67,8 +66,6 @@ const updateCartSuccess = function (data, actionDescription) {
 }
 
 const populateCart = function (data) {
-  // console.log(store.user)
-
   const showCartHtml = showCartTemplate({ items: store.user.cart })
   $('#cart-items').html(showCartHtml)
   $('#cart-summary').html(showCartSummary({ summary: store.user }))
@@ -76,9 +73,7 @@ const populateCart = function (data) {
 }
 
 const getUserCartSuccess = function (data) {
-  console.log('in getusercart success data is', data)
   store.user.cart = data.user.cart
-  console.log('get user store', store.user.cart)
 }
 
 const makeOrderSuccess = function (data) {
@@ -99,7 +94,6 @@ const makeOrderSuccess = function (data) {
 }
 
 const orderHistorySuccess = function (data) {
-  console.log('data.user.orders in orderhistorysuccess is ', data.orders)
   store.user.orders = data.orders
   const orderHistoryHtml = orderHistoryTemplate({ orders: data.orders })
   $('.history-populate').html(orderHistoryHtml)

@@ -52,7 +52,6 @@ const onSignOut = function () {
   api.signOut(data)
     .then(ui.onSignOutSuccess)
     .then(() => { store.user = undefined })
-    .then(() => console.log('store user', store.user))
     .catch(ui.signOutFailure)
 }
 
