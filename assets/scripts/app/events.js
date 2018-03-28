@@ -73,7 +73,7 @@ const onRemoveCartItem = (event) => {
 
   api.updateCart(data)
     .then(ui.updateCartSuccess(data, actionDescription))
-    .then(onGetUserCart())
+    .then(onGetUserCart)
     .catch(ui.updateCartFailure)
 }
 
@@ -81,7 +81,7 @@ const onCartClickOpen = function () {
   event.preventDefault()
   if (store.user !== undefined) {
     api.getUserCart()
-      .then(cart.cartTotal())
+      .then(cart.cartTotal)
       .then(ui.populateCart)
       .catch(ui.populateCartError)
   } else {
