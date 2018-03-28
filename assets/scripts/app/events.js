@@ -136,13 +136,18 @@ const emptycart = function () { // TODO this isn't working...
   let userData
   authApi.getUser()
     .then((d) => {
-      // console.log('inside empty cart, data is not expecting empty array', d)
+      console.log('inside empty cart, data is not expecting empty array', d)
       userData = d
       // console.log('intiial value of userData is ', userData)
-      userData.user.cart = [{}]
-      console.log('userData is now', userData)
-      const data = userData.user
-      console.log('data with userData.user', data)
+      userData.user.cart = []
+      // console.log('userData is now', userData)
+      // const data = userData.user
+      // console.log('data with userData.user', data)
+      const data = {
+        'user': {
+          'cart': userData.user.cart
+        }
+      }
       return data
     })
     .then(api.updateCart)
@@ -174,7 +179,7 @@ const convertCartToOrder = function (data) {
   console.log('total cost of order', userData.order.orderTotal)
   api.makeOrder(userData)
     .then(ui.makeOrderSuccess) // TODO update to sucess message
-    // .then(emptycart)
+    .then(emptycart)
     .catch(console.error)
 }
 

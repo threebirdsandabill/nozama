@@ -68,7 +68,6 @@ const cartTotal = function () {
     totalCost = totalCost + (cartItems[i].itemId.price * cartItems[i].itemQty)
 //     totalItems = totalItems + cartItems[i].itemId.itemQty
 //     totalCost = totalCost + cartItems[i].itemId.price
-
   }
 
   store.user.totalCost = totalCost.toFixed(2)
