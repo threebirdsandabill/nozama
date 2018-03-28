@@ -1,4 +1,4 @@
-<!-- {{#if orders}}
+
   <div class="row">
     <div class="form-group">
       <table id="clientOrderHistory" class="table table-bordered nowrap">
@@ -10,6 +10,7 @@
             <th>Cost</th>
           </tr>
         </thead>
+        {{#if orders}}
         <tbody>
         {{#each orders as |order|}}
           <tr>
@@ -20,12 +21,13 @@
           </tr>
         {{/each}}
         </tbody>
+        {{else}}
+          <div class="message">No Orders</div>
+        {{/if}}
       </table>
     </div>
   </div>
-{{else}}
-  <div class="message">No Orders</div>
-{{/if}} -->
+
 
 <!-- <div class="row">
   <table class="table table-bordered table-striped" id="clientOrderHistory" data-id="{{item.id}}">
