@@ -155,9 +155,12 @@ const getUserDetails = function () {
 //     // .then((prev) => console.log('previous is ', prev))
 // }
 
-
 const showAnEmptyCart = function () {
   // TODO shit
+  api.getUserCart()
+    .then(cart.cartTotal)
+    .then(ui.getUserCartSuccess)
+    .catch(ui.getUserCartFailure)
 }
 
 const convertCartToOrder = function (data) {
