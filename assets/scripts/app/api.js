@@ -15,7 +15,7 @@ const getItems = function (data) {
 }
 
 const updateCart = function (data) {
-  console.log('store is', store)
+  console.log('in update Cart with', data)
   return $.ajax({
     url: config.apiUrl + '/users/' + store.user.id,
     method: 'PATCH',
@@ -27,7 +27,33 @@ const updateCart = function (data) {
   })
 }
 
+const createCharge = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/tokens',
+    method: 'POST',
+    headers: {
+      contentType: 'application/json',
+      authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
+const makeOrder = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/orders',
+    method: 'POST',
+    headers: {
+      contentType: 'application/json',
+      authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 module.exports = {
   getItems,
-  updateCart
+  updateCart,
+  createCharge,
+  makeOrder
 }
