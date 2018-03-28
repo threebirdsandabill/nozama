@@ -3,7 +3,6 @@ const api = require('./api')
 const store = require('../store')
 // const getFormFields = require('../../../lib/get-form-fields')
 const ui = require('./ui')
-const showCartTemplate = require('../templates/cart-populate.handlebars')
 const cart = require('./cart')
 const authApi = require('../auth/api')
 
@@ -32,6 +31,7 @@ const onAddToCart = (event) => {
     api.updateCart(data)
 
       .then(ui.updateCartSuccess(data, actionDescription))
+      .then(onGetUserCart())
       .catch(ui.updateCartFailure)
     // api.updateCart()
     //   .then(ui.showAddToCart)
@@ -54,6 +54,7 @@ const onUpdateCartItemQty = (event) => {
 
   api.updateCart(data)
     .then(ui.updateCartSuccess(data, actionDescription))
+    .then(onGetUserCart())
     .catch(ui.updateCartFailure)
 }
 
@@ -69,20 +70,35 @@ const onRemoveCartItem = (event) => {
 
   api.updateCart(data)
     .then(ui.updateCartSuccess(data, actionDescription))
+    .then(onGetUserCart())
     .catch(ui.updateCartFailure)
 }
 
 const onCartClickOpen = function () {
-  authApi.getUser()
-    .then(ui.populateCart)
-    .catch(ui.populateCartError)
+  event.preventDefault()
+  if (store.user !== undefined) {
+    api.getUserCart()
+      .then(ui.populateCart)
+      .catch(ui.populateCartError)
+  } else {
+    $('#signInModal').modal('show')
+  }
+}
 
-  $('#addToCartModal').modal('show')
+const onGetUserCart = () => {
+  event.preventDefault()
+  //  console.log('userid for cart', store.user.id)
+  api.getUserCart(store.user.id)
+    .then(ui.getUserCartSuccess)
+    .catch(ui.getUserCartFailure)
+  //  console.log('total', store.user.totalPrice)
 }
 
 const addHandlers = () => {
   $('body').on('click', '.btn-add-to-cart', onAddToCart)
   $('.cart-icon').on('click', onCartClickOpen)
+  $('.get-user').on('click', onGetUserCart)
+
   // add event for updating cart item
   // add event for removing cart item
 }
@@ -97,5 +113,6 @@ module.exports = {
   onShowItems,
   onAddToCart,
   onUpdateCartItemQty,
-  onRemoveCartItem
+  onRemoveCartItem,
+  onGetUserCart
 }

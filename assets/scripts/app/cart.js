@@ -36,6 +36,19 @@ const updateCartArray = function (itemId, itemQty, updateType) {
   }
 }
 
+const cartTotal = function () {
+  let totalPrice = 0
+  const cartItems = store.user.cart
+  for (let i = 0; i < cartItems.length; i++) {
+    console.log('logitems',cartItems[i])
+
+    totalPrice = totalPrice + cartItems[i].price
+  }
+  store.user.totalPrice = totalPrice
+
+}
+
 module.exports = {
-  updateCartArray
+  updateCartArray,
+  cartTotal
 }
