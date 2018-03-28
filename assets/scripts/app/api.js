@@ -25,7 +25,7 @@ const getUserCart = function () {
 }
 
 const updateCart = function (data) {
-  console.log('in update Cart with', data)
+  console.log('in update Cart withTHIS IS WHAT ', data)
   return $.ajax({
     url: config.apiUrl + '/users/' + store.user.id,
     method: 'PATCH',

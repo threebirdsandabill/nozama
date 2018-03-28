@@ -33,8 +33,8 @@ const onAddToCart = (event) => {
     //  const data = cart.updateCartArray(itemId, itemQty)
     console.log('cart data is in onAddToCart', data)
     api.updateCart(data)
-      .then(ui.updateCartSuccess(data, actionDescription))
-      .then(onGetUserCart())
+      .then((data) => { ui.updateCartSuccess(data, actionDescription) })
+      .then(onGetUserCart)
       .catch(ui.updateCartFailure)
     // api.updateCart()
     //   .then(ui.showAddToCart)
@@ -132,21 +132,32 @@ const getUserDetails = function () {
     .then(convertCartToOrder)
 }
 
-const emptycart = function () { // TODO this isn't working...
-  let userData
-  authApi.getUser()
-    .then((d) => {
-      // console.log('inside empty cart, data is not expecting empty array', d)
-      userData = d
-      // console.log('intiial value of userData is ', userData)
-      userData.user.cart = [{}]
-      console.log('userData is now', userData)
-      const data = userData.user
-      console.log('data with userData.user', data)
-      return data
-    })
-    .then(api.updateCart)
-    .then((prev) => console.log('previous is ', prev))
+// const emptycart = function () { // TODO this isn't working...
+//   let userData
+//   authApi.getUser()
+//     .then((d) => {
+//       console.log('inside empty cart, data is not expecting empty array', d)
+//       userData = d
+//       // console.log('intiial value of userData is ', userData)
+//       // userData.user.cart = []
+//       // console.log('userData is now', userData)
+//       // const data = userData.user
+//       // console.log('data with userData.user', data)
+//       const data = {
+//         'user': {
+//           'cart': [null]
+//         }
+//       }
+//       console.log('in emptycart, data.user.cart is', data.user.cart)
+//       return data
+//     })
+//     .then(api.updateCart)
+//     // .then((prev) => console.log('previous is ', prev))
+// }
+
+
+const showAnEmptyCart = function () {
+  // TODO shit
 }
 
 const convertCartToOrder = function (data) {
@@ -173,8 +184,11 @@ const convertCartToOrder = function (data) {
   userData.order.orderTotal = orderCost
   console.log('total cost of order', userData.order.orderTotal)
   api.makeOrder(userData)
-    .then(ui.makeOrderSuccess) // TODO update to sucess message
-    // .then(emptycart)
+    .then(ui.makeOrderSuccess)
+    .then(showAnEmptyCart)
+    // .then(cart.cartTotal)
+    // .then(ui.populateCart)
+    // .catch(ui.populateCartError)
     .catch(console.error)
 }
 

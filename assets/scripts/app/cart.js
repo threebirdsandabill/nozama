@@ -58,7 +58,7 @@ const removeItem = function () {
 
 }
 
-const cartTotal = function () {
+const cartTotal = function (data) {
   let totalCost = 0
   let totalItems = 0
   const cartItems = store.user.cart
@@ -68,11 +68,11 @@ const cartTotal = function () {
     totalCost = totalCost + (cartItems[i].itemId.price * cartItems[i].itemQty)
 //     totalItems = totalItems + cartItems[i].itemId.itemQty
 //     totalCost = totalCost + cartItems[i].itemId.price
-
   }
 
   store.user.totalCost = totalCost.toFixed(2)
   store.user.totalItems = totalItems
+  return data
   // console.log('user store total', store.user.totalCost)
 }
 
