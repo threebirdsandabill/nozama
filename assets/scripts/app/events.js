@@ -23,14 +23,12 @@ const onAddToCart = (event) => {
     const itemId = $(event.target).data('btnitemid')
     const itemQty = $('#qty_' + itemId).val()
     const itemPrice = $('#price_' + itemId).val()
-    console.log()
-    console.log('item price is ', itemPrice)
     // set actionType so that the ui function knows what kind of message to give
     const actionDescription = ' added'
 
     const data = {
       'user': {
-        'cart': cart.updateCartArray(itemId, itemQty, 'add')
+        'cart': cart.updateCartArray(itemId, itemQty, itemPrice, 'add')
       }
     }
     //  const data = cart.updateCartArray(itemId, itemQty)
@@ -55,8 +53,9 @@ const onUpdateCartItemQty = (event) => {
 
   const itemId = $(event.target).data('btnupdateitemid')
   const itemQty = $('#updateqty_' + itemId).val()
+  const itemPrice = $('#price_' + itemId).val()
 
-  const data = cart.updateCartArray(itemId, itemQty, 'update')
+  const data = cart.updateCartArray(itemId, itemQty, itemPrice, 'update')
   console.log('cart data is onUpdateCartitemQty', data)
 
   api.updateCart(data)
@@ -157,11 +156,12 @@ const convertCartToOrder = function (data) {
   }
   console.log('orderAmountTotal is', orderTotalAmount)
   let orderCost = 0
+  console.log('look here for the shit you need', data.user)
   for (let i = 0; i < data.user.cart.length; i++) {
     let itemsInstance = {
       itemId: data.user.cart[i].itemId,
       quantity: data.user.cart[i].itemQty,
-      cost: 300 // TODO need to update this to be dynamic
+      cost: data.user.cart[i].itemPrice * data.user.cart[i].itemQty
     }
     orderCost = orderCost + itemsInstance.cost
     userData.order.items.push(itemsInstance)
@@ -169,7 +169,7 @@ const convertCartToOrder = function (data) {
   userData.order.orderTotal = orderCost
   console.log('total cost of order', userData.order.orderTotal)
   api.makeOrder(userData)
-    .then((d) => console.log('in promise for make order', d)) // TODO update to sucess message
+    .then(ui.makeOrderSuccess) // TODO update to sucess message
     // .then(emptycart)
     .catch(console.error)
 }
