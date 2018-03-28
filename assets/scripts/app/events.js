@@ -32,8 +32,8 @@ const onAddToCart = (event) => {
     }
     //  const data = cart.updateCartArray(itemId, itemQty)
     api.updateCart(data)
-      .then(ui.updateCartSuccess(data, actionDescription))
-      .then(onGetUserCart())
+      .then((data) => { ui.updateCartSuccess(data, actionDescription) })
+      .then(onGetUserCart)
       .catch(ui.updateCartFailure)
     // api.updateCart()
     //   .then(ui.showAddToCart)
@@ -133,6 +133,35 @@ const emptycart = function () { // TODO this isn't working...
       return data
     })
     .then(api.updateCart)
+  
+// const emptycart = function () { // TODO this isn't working...
+//   let userData
+//   authApi.getUser()
+//     .then((d) => {
+//       console.log('inside empty cart, data is not expecting empty array', d)
+//       userData = d
+//       // console.log('intiial value of userData is ', userData)
+//       // userData.user.cart = []
+//       // console.log('userData is now', userData)
+//       // const data = userData.user
+//       // console.log('data with userData.user', data)
+//       const data = {
+//         'user': {
+//           'cart': [null]
+//         }
+//       }
+//       console.log('in emptycart, data.user.cart is', data.user.cart)
+//       return data
+//     })
+//     .then(api.updateCart)
+//     // .then((prev) => console.log('previous is ', prev))
+// }
+
+const showAnEmptyCart = function () {
+  api.getUserCart()
+    .then(cart.cartTotal)
+    .then(ui.getUserCartSuccess)
+    .catch(ui.getUserCartFailure)
 }
 
 const convertCartToOrder = function (data) {
@@ -155,8 +184,11 @@ const convertCartToOrder = function (data) {
   }
   userData.order.orderTotal = orderCost
   api.makeOrder(userData)
-    .then(ui.makeOrderSuccess) // TODO update to sucess message
-    // .then(emptycart)
+    .then(ui.makeOrderSuccess)
+    .then(showAnEmptyCart)
+    // .then(cart.cartTotal)
+    // .then(ui.populateCart)
+    // .catch(ui.populateCartError)
     .catch(console.error)
 }
 

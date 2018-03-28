@@ -46,7 +46,7 @@ const removeItem = function () {
 
 }
 
-const cartTotal = function () {
+const cartTotal = function (data) {
   let totalCost = 0
   let totalItems = 0
   const cartItems = store.user.cart
@@ -59,6 +59,8 @@ const cartTotal = function () {
 
   store.user.totalCost = totalCost.toFixed(2)
   store.user.totalItems = totalItems
+  return data
+
 }
 
 module.exports = {

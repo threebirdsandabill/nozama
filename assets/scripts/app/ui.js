@@ -63,7 +63,6 @@ const updateCartSuccess = function (data, actionDescription) {
 
   $('#cart-items').html(showCartTemplate({ items: store.user.cart }))
   $('#cart-summary').html(showCartSummary({ summary: store.user }))
-
 }
 
 const populateCart = function (data) {
@@ -91,6 +90,7 @@ const makeOrderSuccess = function (data) {
     loader: true,
     loaderBg: '#9EC600'
   })
+
 }
 
 const orderHistorySuccess = function (data) {

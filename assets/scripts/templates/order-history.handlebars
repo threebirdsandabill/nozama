@@ -12,11 +12,13 @@
         {{#if orders}}
         <tbody>
         {{#each orders as |order|}}
+        {{#if order.editable}}
           <tr>
             <td>{{order.orderDate}}</td>
             <td>{{order.id}}</td>
-            <td>{{order.cost}}</td>
+            <td>{{order.orderTotal}}</td>
           </tr>
+          {{/if}}
         {{/each}}
         </tbody>
         {{else}}
