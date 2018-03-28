@@ -3,7 +3,9 @@
 const store = require('../store')
 
 const updateCartArray = function (itemId, itemQty, itemPrice, updateType) {
-  const cartItems = store.user.cart
+
+  let cartItems = store.user.cart
+  
   const checkIfItemExists = function (itemId) {
     for (let i = 0; i < cartItems.length; i++) {
       if (cartItems[i].itemId._id === itemId) {
@@ -14,11 +16,17 @@ const updateCartArray = function (itemId, itemQty, itemPrice, updateType) {
   }
   const indexOfArray = checkIfItemExists(itemId)
   if (updateType === 'remove') {
+    console.log('got here')
     if (indexOfArray !== -1 && indexOfArray !== undefined) {
       cartItems.splice(indexOfArray, 1)
+
+      if (cartItems.length === 0) {
+        cartItems = 'empty string'
+      }
       return cartItems
     }
   } else {
+    console.log('got there')
     if (indexOfArray === -1 || indexOfArray === undefined) {
       const newItem = {
         itemId: itemId,
