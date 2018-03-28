@@ -44,7 +44,7 @@ const cartTotal = function () {
   const cartItems = store.user.cart
   for (let i = 0; i < cartItems.length; i++) {
   // console.log('logitems', cartItems[i].itemId.price)
-    totalItems = totalItems + cartItems[i].itemId.itemQty
+    totalItems = totalItems + cartItems[i].itemQty
     totalCost = totalCost + cartItems[i].itemId.price
   }
   store.user.totalCost = totalCost.toFixed(2)
