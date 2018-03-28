@@ -1,4 +1,4 @@
-{{#if orders}}
+
   <div class="row">
     <div class="form-group">
       <table id="clientOrderHistory" class="table table-bordered nowrap">
@@ -10,6 +10,7 @@
             <th>Cost</th>
           </tr>
         </thead>
+        {{#if orders}}
         <tbody>
         {{#each orders as |order|}}
           <tr>
@@ -20,9 +21,61 @@
           </tr>
         {{/each}}
         </tbody>
+        {{else}}
+          <div class="message">No Orders</div>
+        {{/if}}
       </table>
     </div>
   </div>
-{{else}}
-  <div class="message">No Orders</div>
-{{/if}}
+
+
+<!-- <div class="row">
+  <table class="table table-bordered table-striped" id="clientOrderHistory" data-id="{{item.id}}">
+    <thead>
+      <tr>
+        <th>Purchase Date</th>
+        <th>Item ID</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Total Amount</th>
+      </tr>
+    </thead>
+    <tbody id="myTable">
+    {{#each pastOrders as |pastOrder|}}
+    <tr>
+      <td>{{order.orderDate}}</td>
+      <td>{{order.id}}</td>
+      <td>{{order.descrption}}</td>
+      <td>{{order.quantity}}</td>
+      <td>{{order.cost}}</td>
+        <td>
+
+     </td>
+      </tr>
+       {{/each}}
+     </tbody>
+  </table> -->
+
+
+
+
+<!-- <table id="clientOrderHistory" class="table table-bordered nowrap">
+ <thead>
+    <tr>
+       <th>Order #</th>
+      <th>Item Name</th>
+      <th>Item Description</th>
+      <th>Item Quantity</th>
+      <th>Item Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Dummy</td>
+      <td>Dummy</td>
+      <td>Dummy</td>
+      <td>Dummy</td>
+      <td>Dummy</td>
+    </tr>
+  </tbody>
+</table> -->
