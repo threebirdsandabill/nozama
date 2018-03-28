@@ -145,13 +145,14 @@ const emptycart = function () { // TODO this isn't working...
       // console.log('data with userData.user', data)
       const data = {
         'user': {
-          'cart': userData.user.cart
+          'cart': []
         }
       }
+      console.log('in emptycart, data.user is', data.user.cart)
       return data
     })
     .then(api.updateCart)
-    .then((prev) => console.log('previous is ', prev))
+    // .then((prev) => console.log('previous is ', prev))
 }
 
 const convertCartToOrder = function (data) {
