@@ -1,6 +1,11 @@
 'use strict'
 
 const showItemGrid = require('../templates/product-grid.handlebars')
+const showCartTemplate = require('../templates/cart.handlebars')
+const showCartSummary = require('../templates/cart-summary.handlebars')
+
+const store = require('../store')
+const cart = require('./cart')
 
 const getItemsSucces = (data) => {
   console.log('data is', data)
@@ -56,9 +61,25 @@ const updateCartSuccess = function (data, actionDescription) {
   })
 }
 
+const populateCart = function (data) {
+  // console.log(store.user)
+
+  const showCartHtml = showCartTemplate({ items: store.user.cart })
+  $('#cart-items').html(showCartHtml)
+  $('#cart-summary').html(showCartSummary({ summary: store.user }))
+  $('#addToCartModal').modal('show')
+}
+
+const getUserCartSuccess = function (data) {
+  store.user.cart = data.user.cart
+  console.log('get user store', store.user.cart)
+}
+
 module.exports = {
   getItemsSucces,
   updateCartSuccess,
   paymentSuccessful,
-  paymentFailure
+  paymentFailure,
+  populateCart,
+  getUserCartSuccess
 }

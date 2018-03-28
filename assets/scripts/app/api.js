@@ -13,6 +13,16 @@ const getItems = function (data) {
     }
   })
 }
+const getUserCart = function () {
+  return $.ajax({
+    url: config.apiUrl + '/users/' + store.user.id,
+    method: 'GET',
+    headers: {
+      contentType: 'application/json',
+      authorization: 'Token token=' + store.user.token
+    }
+  })
+}
 
 const updateCart = function (data) {
   console.log('in update Cart with', data)
@@ -55,5 +65,6 @@ module.exports = {
   getItems,
   updateCart,
   createCharge,
-  makeOrder
+  makeOrder,
+  getUserCart
 }
