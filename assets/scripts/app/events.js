@@ -31,7 +31,6 @@ const onAddToCart = (event) => {
       }
     }
     //  const data = cart.updateCartArray(itemId, itemQty)
-    console.log('cart data is in onAddToCart', data)
     api.updateCart(data)
       .then((data) => { ui.updateCartSuccess(data, actionDescription) })
       .then(onGetUserCart)
@@ -58,9 +57,6 @@ const onUpdateCartItemQty = (event) => {
       'cart': cart.updateCartArray(itemId, itemQty, itemPrice, 'update')
     }
   }
-
-  console.log('cart data is onUpdateCartitemQty', data)
-
   api.updateCart(data)
     .then((data) => { ui.updateCartSuccess(data, actionDescription) })
     .then(onGetUserCart)
@@ -78,7 +74,6 @@ const onRemoveCartItem = (event) => {
       'cart': cart.updateCartArray(itemId, 0, 0, 'remove')
     }
   }
-  console.log('onremoveCartItem data', data)
   api.updateCart(data)
     .then((data) => { ui.updateCartSuccess(data, actionDescription) })
     .then(onGetUserCart)
@@ -99,12 +94,10 @@ const onCartClickOpen = function () {
 
 const onGetUserCart = () => {
   //  event.preventDefault()
-  //  console.log('userid for cart', store.user.id)
   api.getUserCart()
     .then(cart.cartTotal)
     .then(ui.getUserCartSuccess)
     .catch(ui.getUserCartFailure)
-  //  console.log('total', store.user.totalCost)
 }
 
 const onGetTotal = () => {
@@ -116,9 +109,7 @@ const onGetTotal = () => {
 }
 
 const onPurchaseClick = function (event) {
-  console.log('in on purchase click')
   orderTotalAmount = store.user.totalCost
-  console.log('in onPurchaseClick, orderTotalAmount is', orderTotalAmount)
   event.preventDefault()
   handler.open({
     name: 'Stripe.com',
@@ -131,6 +122,18 @@ const onPurchaseClick = function (event) {
 const getUserDetails = function () {
   authApi.getUser()
     .then(convertCartToOrder)
+}
+
+const emptycart = function () { // TODO this isn't working...
+  let userData
+  authApi.getUser()
+    .then((d) => {
+      userData = d
+      userData.user.cart = [{}]
+      const data = userData.user
+      return data
+    })
+    .then(api.updateCart)
 }
 
 // const emptycart = function () { // TODO this isn't working...
@@ -157,7 +160,6 @@ const getUserDetails = function () {
 // }
 
 const showAnEmptyCart = function () {
-  // TODO shit
   api.getUserCart()
     .then(cart.cartTotal)
     .then(ui.getUserCartSuccess)
@@ -165,7 +167,6 @@ const showAnEmptyCart = function () {
 }
 
 const convertCartToOrder = function (data) {
-  console.log('in convertCartToOrder')
   let userData = {
     order: {
       orderDate: new Date(),
@@ -173,9 +174,7 @@ const convertCartToOrder = function (data) {
       orderTotal: 0
     }
   }
-  console.log('orderAmountTotal is', orderTotalAmount)
   let orderCost = 0
-  console.log('look here for the shit you need', data.user)
   for (let i = 0; i < data.user.cart.length; i++) {
     let itemsInstance = {
       itemId: data.user.cart[i].itemId,
@@ -186,7 +185,6 @@ const convertCartToOrder = function (data) {
     userData.order.items.push(itemsInstance)
   }
   userData.order.orderTotal = orderCost
-  console.log('total cost of order', userData.order.orderTotal)
   api.makeOrder(userData)
     .then(ui.makeOrderSuccess)
     .then(showAnEmptyCart)
@@ -207,7 +205,6 @@ const handler = StripeCheckout.configure({
         amount: orderTotalAmount * 100 // TODO update to be equal to the total
       }
     }
-    console.log('after charge execution, amount (orderTotal) is', orderTotalAmount)
     // const data = tokenInfo
     api.createCharge(data)
       .then(ui.paymentSuccessful)
@@ -221,7 +218,6 @@ const handler = StripeCheckout.configure({
 const displayOrderHistory = function () {
   $('#orderHistoryModal').modal('show')
   api.getPurchaseHistory()
-    .then(console.log('display order history is firing in events.js'))
     .then(ui.orderHistorySuccess)
     .then('ui order history success promise in events has fired')
     .catch(ui.orderHistoryFailure)
