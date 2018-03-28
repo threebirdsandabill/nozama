@@ -22,6 +22,9 @@ const onAddToCart = (event) => {
   if (store.user !== undefined) {
     const itemId = $(event.target).data('btnitemid')
     const itemQty = $('#qty_' + itemId).val()
+    const itemPrice = $('#price_' + itemId).val()
+    console.log()
+    console.log('item price is ', itemPrice)
     // set actionType so that the ui function knows what kind of message to give
     const actionDescription = ' added'
 
