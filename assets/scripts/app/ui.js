@@ -59,6 +59,9 @@ const updateCartSuccess = function (data, actionDescription) {
     loader: true,
     loaderBg: '#9EC600'
   })
+  $('#cart-items').html(showCartTemplate({ items: store.user.cart }))
+  $('#cart-summary').html(showCartSummary({ summary: store.user }))
+
 }
 
 const populateCart = function (data) {
