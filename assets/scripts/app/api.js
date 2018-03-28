@@ -61,10 +61,23 @@ const makeOrder = function (data) {
   })
 }
 
+const getPurchaseHistory = function () {
+  console.log('store user in API app is ', store.user)
+  return $.ajax({
+    url: config.apiUrl + '/orders/',
+    method: 'GET',
+    headers: {
+      contentType: 'application/json',
+      authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   getItems,
   updateCart,
   createCharge,
   makeOrder,
-  getUserCart
+  getUserCart,
+  getPurchaseHistory
 }

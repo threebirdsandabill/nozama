@@ -3,7 +3,7 @@
 const showItemGrid = require('../templates/product-grid.handlebars')
 const showCartTemplate = require('../templates/cart.handlebars')
 const showCartSummary = require('../templates/cart-summary.handlebars')
-
+const orderHistoryTemplate = require('../templates/order-history.handlebars')
 const store = require('../store')
 const cart = require('./cart')
 
@@ -95,6 +95,16 @@ const makeOrderSuccess = function (data) {
   })
 }
 
+const orderHistorySuccess = function (data) {
+  console.log('data in orderhistorysuccess is ', data)
+  const orderHistoryHtml = orderHistoryTemplate({ orders: store.user.orders })
+  $('.history-populate').html(orderHistoryHtml)
+}
+
+const orderHistoryFailure = function (error) {
+  console.log(error)
+}
+
 module.exports = {
   getItemsSucces,
   updateCartSuccess,
@@ -102,5 +112,7 @@ module.exports = {
   paymentFailure,
   populateCart,
   getUserCartSuccess,
-  makeOrderSuccess
+  makeOrderSuccess,
+  orderHistorySuccess,
+  orderHistoryFailure
 }

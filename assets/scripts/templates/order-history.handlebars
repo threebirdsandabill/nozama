@@ -4,19 +4,17 @@
       <table id="clientOrderHistory" class="table table-bordered nowrap">
         <thead>
           <tr>
-            <th>Date</th>
+            <th>Purchase Date</th>
             <th>Item ID</th>
-            <th>Quantity</th>
-            <th>Cost</th>
+            <th>Total Amount</th>
           </tr>
         </thead>
         {{#if orders}}
         <tbody>
         {{#each orders as |order|}}
           <tr>
-            <td>{{order.id}}</td>
             <td>{{order.orderDate}}</td>
-            <td>{{order.quantity}}</td>
+            <td>{{order.id}}</td>
             <td>{{order.cost}}</td>
           </tr>
         {{/each}}
