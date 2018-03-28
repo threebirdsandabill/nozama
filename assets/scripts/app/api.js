@@ -3,8 +3,6 @@ const config = require('../config')
 const store = require('../store')
 
 const getItems = function (data) {
-  // console.log('token is', store.user.token)
-  // console.log('url ', config.apiUrl)
   return $.ajax({
     url: config.apiUrl + '/items',
     method: 'GET',
@@ -25,7 +23,6 @@ const getUserCart = function () {
 }
 
 const updateCart = function (data) {
-  console.log('in update Cart withTHIS IS WHAT ', data)
   return $.ajax({
     url: config.apiUrl + '/users/' + store.user.id,
     method: 'PATCH',
@@ -62,7 +59,6 @@ const makeOrder = function (data) {
 }
 
 const getPurchaseHistory = function () {
-  console.log('store user in API app is ', store.user)
   return $.ajax({
     url: config.apiUrl + '/orders/',
     method: 'GET',
