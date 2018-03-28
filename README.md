@@ -1,8 +1,14 @@
 # NOZAMA
 
-[Here is a link to the back-end API]()
+DEPLOYED SITE:  [PASTE DEPLOYED GITHUB.IO PAGE LINK]
+DEPLOYED BACKEND: [HEROKUAPP LINK]
+
+FRONT-END REPOSITORY: [LINK]
+BACKEND REPOSITORY:  [LINK]
 
 # Planned Objective
+
+Build an e-commerce website with a fully functioning back end to take customer orders, accept payment, and store order data.
 
 # Technologies Used
 
@@ -30,20 +36,20 @@
 
 ## USER STORIES
 
-As a user, I want to be able to create an account
-As a user, I want to be able to see store items without signing up
-As a user, I want to be able to log in
-As a user, I want to be able to log out
-As a user, I want to be able to change my password
-As a user, I want to see feedback from all my actions
-As a user, I want to be able to purchase items from this site
-As a user, I want to be able to add an item to my shopping cart
-As a user, I want to be able to select the quantity of those items
-As a user, I want my cart widget to be updated in real time
-As a user, I want to be able to view my cart, which will include item name, quantity, price, and total
-As a user, I want to be able to update and delete items from my cart
-As a user, I want to be able to checkout and complete my purchase
-As a user, I want to be able to view my purchase history
+- As a user, I want to be able to create an account
+- As a user, I want to be able to see store items without signing up
+- As a user, I want to be able to log in
+- As a user, I want to be able to log out
+- As a user, I want to be able to change my password
+- As a user, I want to see feedback from all my actions
+- As a user, I want to be able to purchase items from this site
+- As a user, I want to be able to add an item to my shopping cart
+- As a user, I want to be able to select the quantity of those items
+- As a user, I want my cart widget to be updated in real time
+- As a user, I want to be able to view my cart, which will include item name, quantity, price, and total
+- As a user, I want to be able to update and delete items from my cart
+- As a user, I want to be able to checkout and complete my purchase
+- As a user, I want to be able to view my purchase history
 
 ## WIREFRAMES
 
