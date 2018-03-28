@@ -29,7 +29,6 @@ const onAddToCart = (event) => {
     //  const data = cart.updateCartArray(itemId, itemQty)
     console.log('cart data is in onAddToCart', data)
     api.updateCart(data)
-
       .then(ui.updateCartSuccess(data, actionDescription))
       .then(onGetUserCart())
       .catch(ui.updateCartFailure)
@@ -46,15 +45,16 @@ const onUpdateCartItemQty = (event) => {
   // set actionType so that the ui function knows what kind of message to give
   const actionDescription = 'updated'
   // get cart items
-  const itemId = '' // get itemid
-  const itemQty = '' // get qty
+
+  const itemId = $(event.target).data('btnupdateitemid')
+  const itemQty = $('#updateqty_' + itemId).val()
 
   const data = cart.updateCartArray(itemId, itemQty, 'update')
   console.log('cart data is onUpdateCartitemQty', data)
 
   api.updateCart(data)
     .then(ui.updateCartSuccess(data, actionDescription))
-    .then(onGetUserCart())
+    .then(onCartClickOpen)
     .catch(ui.updateCartFailure)
 }
 
@@ -93,7 +93,7 @@ const onGetUserCart = () => {
     .then(cart.cartTotal)
     .then(ui.getUserCartSuccess)
     .catch(ui.getUserCartFailure)
-  //  console.log('total', store.user.totalPrice)
+  //  console.log('total', store.user.totalCost)
 }
 
 const onGetTotal = () => {
@@ -106,6 +106,7 @@ const addHandlers = () => {
   $('.cart-icon').on('click', onCartClickOpen)
   $('.get-user').on('click', onGetUserCart)
   $('#carttotal').on('click', onGetTotal)
+  $('body').on('click', '.btn-update-item', onUpdateCartItemQty)
 
   // add event for updating cart item
   // add event for removing cart item

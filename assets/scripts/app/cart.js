@@ -4,7 +4,8 @@ const store = require('../store')
 
 const updateCartArray = function (itemId, itemQty, updateType) {
   const cartItems = store.user.cart
-  console.log('in here with cart items of', cartItems)
+  console.log('itemid', itemId)
+//  console.log('in here with cart items of', cartItems)
 
   const checkIfItemExists = function (itemId) {
     for (let i = 0; i < cartItems.length; i++) {
@@ -38,15 +39,17 @@ const updateCartArray = function (itemId, itemQty, updateType) {
 }
 
 const cartTotal = function () {
-  let totalPrice = 0
+  let totalCost = 0
+  let totalItems = 0
   const cartItems = store.user.cart
   for (let i = 0; i < cartItems.length; i++) {
   // console.log('logitems', cartItems[i].itemId.price)
-
-    totalPrice = totalPrice + cartItems[i].itemId.price
+    totalItems = totalItems + cartItems[i].itemId.itemQty
+    totalCost = totalCost + cartItems[i].itemId.price
   }
-  store.user.totalPrice = totalPrice
-  console.log('user store total', store.user.totalPrice)
+  store.user.totalCost = totalCost.toFixed(2)
+  store.user.totalItems = totalItems
+  // console.log('user store total', store.user.totalCost)
 }
 
 module.exports = {
