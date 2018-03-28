@@ -70,6 +70,7 @@ const cartTotal = function () {
 //     totalCost = totalCost + cartItems[i].itemId.price
 
   }
+
   store.user.totalCost = totalCost.toFixed(2)
   store.user.totalItems = totalItems
   // console.log('user store total', store.user.totalCost)

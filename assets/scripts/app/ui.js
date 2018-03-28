@@ -22,10 +22,10 @@ const paymentSuccessful = function (data) {
     allowToastClose: true,
     hideAfter: 3000,
     stack: 5,
-    position: 'top-right',
+    position: 'top-left',
     textAlign: 'left',
     loader: true,
-    loaderBg: '#9EC600'
+    loaderBg: '#F09C40'
   })
 }
 
@@ -38,10 +38,10 @@ const paymentFailure = function (data) {
     allowToastClose: true,
     hideAfter: 3000,
     stack: 5,
-    position: 'top-right',
+    position: 'top-left',
     textAlign: 'left',
     loader: true,
-    loaderBg: '#9EC600'
+    loaderBg: '#F09C40'
   })
 }
 
@@ -54,11 +54,14 @@ const updateCartSuccess = function (data, actionDescription) {
     allowToastClose: true,
     hideAfter: 3000,
     stack: 5,
-    position: 'top-right',
+    position: 'top-left',
     textAlign: 'left',
     loader: true,
-    loaderBg: '#9EC600'
+    loaderBg: '#F09C40'
   })
+
+  cart.cartTotal(data)
+
   $('#cart-items').html(showCartTemplate({ items: store.user.cart }))
   $('#cart-summary').html(showCartSummary({ summary: store.user }))
 
