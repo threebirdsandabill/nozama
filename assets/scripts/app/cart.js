@@ -5,8 +5,7 @@ const store = require('../store')
 const updateCartArray = function (itemId, itemQty, itemPrice, updateType) {
   const cartItems = store.user.cart
   console.log('itemid', itemId)
-//  console.log('in here with cart items of', cartItems)
-
+  // console.log('in here with cart items of', cartItems)
   const checkIfItemExists = function (itemId) {
     for (let i = 0; i < cartItems.length; i++) {
     //  console.log('value of itemId at loop is', cartItems[i].itemId._id)
@@ -31,7 +30,7 @@ const updateCartArray = function (itemId, itemQty, itemPrice, updateType) {
       console.log('in the if')
       const newItem = {
         itemId: itemId,
-        itemQty: itemQty
+        itemQty: itemQty,
         itemPrice: itemPrice
       }
       cartItems.push(newItem)

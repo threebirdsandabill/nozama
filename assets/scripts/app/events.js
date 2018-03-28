@@ -4,7 +4,6 @@ const store = require('../store')
 // const getFormFields = require('../../../lib/get-form-fields')
 const ui = require('./ui')
 const showCartTemplate = require('../templates/cart-populate.handlebars')
-const orderHistoryTemplate = require('../templates/order-history.handlebars')
 const cart = require('./cart')
 const authApi = require('../auth/api')
 let orderTotalAmount
@@ -203,8 +202,11 @@ const handler = StripeCheckout.configure({
 
 const displayOrderHistory = function () {
   $('#orderHistoryModal').modal('show')
-  const orderHistoryHtml = orderHistoryTemplate({ orders: store.user.orders }) // this part is basically dummy code!
-  $('.history-populate').html(orderHistoryHtml)
+  api.getPurchaseHistory()
+    .then(console.log('display order history is firing in events.js'))
+    .then(ui.orderHistorySuccess)
+    .then('ui order history success promise in events has fired')
+    .catch(ui.orderHistoryFailure)
 }
 
 const addHandlers = () => {
