@@ -3,8 +3,9 @@ const api = require('./api')
 const store = require('../store')
 // const getFormFields = require('../../../lib/get-form-fields')
 const ui = require('./ui')
+const showCartTemplate = require('../templates/cart-populate.handlebars')
+const orderHistoryTemplate = require('../templates/order-history.handlebars')
 const cart = require('./cart')
-const authApi = require('../auth/api')
 
 const onShowItems = function () {
 //  event.preventDefault()
@@ -99,6 +100,15 @@ const onGetUserCart = () => {
 const onGetTotal = () => {
   event.preventDefault()
   cart.cartTotal()
+  $('#addToCartModal').modal('show')
+  const showCartHtml = showCartTemplate({ items: store.user.cart })
+  $('.cart-populate').html(showCartHtml)
+}
+
+const displayOrderHistory = function () {
+  $('#orderHistoryModal').modal('show')
+  const orderHistoryHtml = orderHistoryTemplate({ orders: store.user.orders }) // this part is basically dummy code!
+  $('.history-populate').html(orderHistoryHtml)
 }
 
 const addHandlers = () => {
@@ -107,7 +117,7 @@ const addHandlers = () => {
   $('.get-user').on('click', onGetUserCart)
   $('#carttotal').on('click', onGetTotal)
   $('body').on('click', '.btn-update-item', onUpdateCartItemQty)
-
+  $('#orderHistory').on('click', displayOrderHistory)
   // add event for updating cart item
   // add event for removing cart item
 }
