@@ -99,13 +99,14 @@ const makeOrderSuccess = function (data) {
 }
 
 const orderHistorySuccess = function (data) {
-  console.log('data in orderhistorysuccess is ', data)
-  const orderHistoryHtml = orderHistoryTemplate({ orders: store.user.orders })
+  console.log('data.user.orders in orderhistorysuccess is ', data.orders)
+  store.user.orders = data.orders
+  const orderHistoryHtml = orderHistoryTemplate({ orders: data.orders })
   $('.history-populate').html(orderHistoryHtml)
 }
 
 const orderHistoryFailure = function (error) {
-  console.log(error)
+  console.error(error)
 }
 
 module.exports = {
