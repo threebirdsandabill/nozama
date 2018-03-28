@@ -188,7 +188,6 @@ const handler = StripeCheckout.configure({
   }
 })
 
-
 const displayOrderHistory = function () {
   $('#orderHistoryModal').modal('show')
   const orderHistoryHtml = orderHistoryTemplate({ orders: store.user.orders }) // this part is basically dummy code!
