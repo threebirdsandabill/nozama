@@ -39,8 +39,7 @@ const populateCart = function (data) {
 
 const getUserCartSuccess = function (data) {
   store.user.cart = data.user.cart
-
-//  console.log('get user store', store.user.cart)
+  console.log('get user store', store.user.cart)
 }
 
 module.exports = {

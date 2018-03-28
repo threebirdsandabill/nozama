@@ -3,14 +3,15 @@
 const store = require('../store')
 
 const updateCartArray = function (itemId, itemQty, updateType) {
-  let cartItems = store.user.cart
+  const cartItems = store.user.cart
   console.log('in here with cart items of', cartItems)
 
   const checkIfItemExists = function (itemId) {
     for (let i = 0; i < cartItems.length; i++) {
-      console.log('value of itemId at loop is', cartItems[i].itemId)
-      console.log('cart items.length is', cartItems.length)
-      if (cartItems[i].itemId === itemId) {
+    //  console.log('value of itemId at loop is', cartItems[i].itemId._id)
+    //  console.log('price of itemId at loop is', cartItems[i].itemId.price)
+    //  console.log('cart items.length is', cartItems.length)
+      if (cartItems[i].itemId._id === itemId) {
         return i
       }
     }
@@ -25,7 +26,7 @@ const updateCartArray = function (itemId, itemQty, updateType) {
       itemQty: itemQty
     }
     cartItems.push(newItem)
-    console.log('new cart', cartItems)
+    // console.log('new cart', cartItems)
     return cartItems
   } else if (updateType === 'update') {
     cartItems[indexOfArray].itemQty = itemQty
@@ -40,12 +41,12 @@ const cartTotal = function () {
   let totalPrice = 0
   const cartItems = store.user.cart
   for (let i = 0; i < cartItems.length; i++) {
-    console.log('logitems',cartItems[i])
+  // console.log('logitems', cartItems[i].itemId.price)
 
-    totalPrice = totalPrice + cartItems[i].price
+    totalPrice = totalPrice + cartItems[i].itemId.price
   }
   store.user.totalPrice = totalPrice
-
+  console.log('user store total', store.user.totalPrice)
 }
 
 module.exports = {

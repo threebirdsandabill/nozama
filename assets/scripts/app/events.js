@@ -78,6 +78,7 @@ const onCartClickOpen = function () {
   event.preventDefault()
   if (store.user !== undefined) {
     api.getUserCart()
+      .then(cart.cartTotal())
       .then(ui.populateCart)
       .catch(ui.populateCartError)
   } else {
@@ -88,16 +89,23 @@ const onCartClickOpen = function () {
 const onGetUserCart = () => {
   event.preventDefault()
   //  console.log('userid for cart', store.user.id)
-  api.getUserCart(store.user.id)
+  api.getUserCart()
+    .then(cart.cartTotal)
     .then(ui.getUserCartSuccess)
     .catch(ui.getUserCartFailure)
   //  console.log('total', store.user.totalPrice)
+}
+
+const onGetTotal = () => {
+  event.preventDefault()
+  cart.cartTotal()
 }
 
 const addHandlers = () => {
   $('body').on('click', '.btn-add-to-cart', onAddToCart)
   $('.cart-icon').on('click', onCartClickOpen)
   $('.get-user').on('click', onGetUserCart)
+  $('#carttotal').on('click', onGetTotal)
 
   // add event for updating cart item
   // add event for removing cart item
