@@ -7,6 +7,7 @@ const showCartTemplate = require('../templates/cart-populate.handlebars')
 const orderHistoryTemplate = require('../templates/order-history.handlebars')
 const cart = require('./cart')
 const authApi = require('../auth/api')
+let orderTotalAmount
 // const
 
 const onShowItems = function () {
@@ -108,12 +109,15 @@ const onGetTotal = () => {
 }
 
 const onPurchaseClick = function (event) {
+  console.log('in on purchase click')
+  orderTotalAmount = store.user.totalCost
+  console.log('in onPurchaseClick, orderTotalAmount is', orderTotalAmount)
   event.preventDefault()
   handler.open({
     name: 'Stripe.com',
     description: 'Nozama Payments', // TODO change
     zipCode: true,
-    amount: 2000 // TODO dynamic amount
+    amount: orderTotalAmount * 100 // have to multiply to get $$ not cents
   })
 }
 
@@ -140,6 +144,7 @@ const emptycart = function () { // TODO this isn't working...
 }
 
 const convertCartToOrder = function (data) {
+  console.log('in convertCartToOrder')
   let userData = {
     order: {
       orderDate: new Date(),
@@ -147,14 +152,13 @@ const convertCartToOrder = function (data) {
       orderTotal: 0
     }
   }
-  console.log('in convertCartToOrder data is', data)
+  console.log('orderAmountTotal is', orderTotalAmount)
   let orderCost = 0
-  console.log('in convertCartToOrder looking for amount', data.user.cart)
   for (let i = 0; i < data.user.cart.length; i++) {
     let itemsInstance = {
       itemId: data.user.cart[i].itemId,
       quantity: data.user.cart[i].itemQty,
-      cost: 12 // TODO need to update this to be dynamic
+      cost: 300 // TODO need to update this to be dynamic
     }
     orderCost = orderCost + itemsInstance.cost
     userData.order.items.push(itemsInstance)
@@ -163,7 +167,7 @@ const convertCartToOrder = function (data) {
   console.log('total cost of order', userData.order.orderTotal)
   api.makeOrder(userData)
     .then((d) => console.log('in promise for make order', d)) // TODO update to sucess message
-    .then(emptycart)
+    // .then(emptycart)
     .catch(console.error)
 }
 
@@ -175,9 +179,10 @@ const handler = StripeCheckout.configure({
     const data = {
       token: {
         token_id: token.id,
-        amount: 10000 // TODO update to be equal to the total
+        amount: orderTotalAmount * 100 // TODO update to be equal to the total
       }
     }
+    console.log('after charge execution, amount (orderTotal) is', orderTotalAmount)
     // const data = tokenInfo
     api.createCharge(data)
       .then(ui.paymentSuccessful)
