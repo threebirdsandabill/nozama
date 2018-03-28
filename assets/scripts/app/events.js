@@ -133,7 +133,8 @@ const emptycart = function () { // TODO this isn't working...
       return data
     })
     .then(api.updateCart)
-  
+}
+
 // const emptycart = function () { // TODO this isn't working...
 //   let userData
 //   authApi.getUser()
