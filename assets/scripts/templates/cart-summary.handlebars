@@ -1,0 +1,8 @@
+{{#if summary}}
+<h4>
+ Grand total: ${{summary.totalCost}}
+</h4>
+  {{#if summary.totalItems}}
+  <input type="button" class="btn btn-default" value="Check Out" id="checkout">
+  {{/if}}
+{{/if}}

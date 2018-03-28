@@ -3,6 +3,8 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~jquery-toast-plugin/src/jquery.toast.css';
 @import './theme.scss';
 
+@import url(https://use.fontawesome.com/releases/v5.0.8/css/all.css);
+
 body {
   padding-top: 60px;
 }
@@ -15,7 +17,64 @@ body {
   padding: 10px;
 }
 
+.card-totals {
+  background-color: #bcbcbc;
+}
+
+
 .item-image-small {
   max-width: 100%;
   margin-bottom: 10px;
+}
+
+.item-image-cart {
+  max-width: 100%;
+  max-height: 150px;
+  margin-bottom: 10px;
+}
+
+.logo {
+  max-height: 40px;
+}
+
+.navbar-brand {
+padding-top: 10px;
+}
+
+.navbar-inverse {
+    background-color: #1E252E;
+    border-color: #090909;
+}
+
+.btn-default {
+  background-color: #fc9425;
+  border-color: #fc9425;
+  color: #fff;
+}
+
+.cart-icon {
+  color: #fff;
+}
+
+.btn-update-item {
+  margin-left: 20px;
+}
+
+.small-input {
+  max-width: 60px;
+  margin-left: 20px;
+}
+
+.table {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.btn-primary {
+  float: right;
+}
+
+.change-pwd {
+  float: right;
+  margin: 5%;
 }

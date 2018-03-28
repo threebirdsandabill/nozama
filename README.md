@@ -1,74 +1,62 @@
-[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
+# NOZAMA
 
-# browser-template
+DEPLOYED SITE:  [PASTE DEPLOYED GITHUB.IO PAGE LINK]
+DEPLOYED BACKEND: [HEROKUAPP LINK]
 
-A template for starting front-end projects. Webpack for `require` system, build
-pipeline, and development server. Boostrap and Handlebars.js included. No
-front-end frameworks included.
+FRONT-END REPOSITORY: [LINK]
+BACKEND REPOSITORY:  [LINK]
 
-## Installation
+# Planned Objective
 
-1. [Download](../../archive/master.zip) this template.
-1. Move to the `wdi/projects` directory, then unzip the template directory with
-    `unzip /Users/<user-name>/Downloads/browser-template-master.zip`.
-1. Rename the template directory from `browser-template-master` to
-    `<project-name>-client`.
-1. Empty [`README.md`](README.md) and fill with your own content.
-1. Replace all instances of `ga-wdi-boston.browser-template` with the name of
-    your project.
-1. Move into the new project and `git init`.
-1. Add all of the files in your project with the command `git add --all`.
-      - **Note: This is the only time you should run this command!**
-1. Commit all of your files with the command `git commit`.
-      - Your commit title should read `Initial commit`.
-1. Install dependencies with `npm install`.
-1. Create a new repository on [github.com](https://github.com),
-    _not GitHub Enterprise_.
-1. Name the new repository with the same name used on Step 3.
+Build an e-commerce website with a fully functioning back end to take customer orders, accept payment, and store order data.
 
-## Structure
+# Technologies Used
 
-Developers should store JavaScript files in [`assets/scripts`](assets/scripts).
-The "manifest" or entry-point is
-[`assets/scripts/index.js`](assets/scripts/index.js). In general, only
-application initialization goes in this file. It's normal for developers to
-start putting all code in this file, but encourage them to break out different
-responsibilities and use the `require` syntax put references where they're
-needed.
+## Back-End:
+- noSQL
+- MongoDB
+- Express
+- Mongoose
+- Node.js
+- Stripe
 
-Developers should set `apiUrls.production` and `apiUrls.development` in
-[`config/environment.js`](config/environment.js).  With
-`apiUrls` set, developers may rely on `apiUrl` as the base for API
-URLs.
+## Front-End:
+- HTMl5/CSS3
+- JavaScript
+- jQuery
+- Modals
+- Toast
+- Stripe
 
-Developers should store styles in [`assets/styles`](assets/styles) and load them
-from [`assets/styles/index.scss`](assets/styles/index.scss). Bootstrap version 3 is
-included in this template.
+# The Process
 
-Developers should use [getFormFields](get-form-fields.md) to retrieve form data
-to send to an API.
+# Outstanding Issues
 
-To deploy a browser-template based SPA, run `grunt deploy`.
+# Wireframes, User Stories, ERD
 
-## Tasks
+## USER STORIES
 
-Developers should run these often!
+- As a user, I want to be able to create an account
+- As a user, I want to be able to see store items without signing up
+- As a user, I want to be able to log in
+- As a user, I want to be able to log out
+- As a user, I want to be able to change my password
+- As a user, I want to see feedback from all my actions
+- As a user, I want to be able to purchase items from this site
+- As a user, I want to be able to add an item to my shopping cart
+- As a user, I want to be able to select the quantity of those items
+- As a user, I want my cart widget to be updated in real time
+- As a user, I want to be able to view my cart, which will include item name, quantity, price, and total
+- As a user, I want to be able to update and delete items from my cart
+- As a user, I want to be able to checkout and complete my purchase
+- As a user, I want to be able to view my purchase history
 
-- `grunt nag` or just `grunt`: runs code quality analysis tools on your code
-    and complains
-- `grunt make-standard`: reformats all your code in the JavaScript Standard Style
-- `grunt <server|serve|s>`: generates bundles, watches, and livereloads
-- `grunt test`: runs any automated tests, depends on `grunt build`
-- `grunt build`: place bundled styles and scripts where `index.html` can find
-    them
+## WIREFRAMES
 
-## Additional Resources
+(https://slack-files.com/T0351JZQ0-F9X526P5E-1c9354d8f5)
+(https://slack-files.com/T0351JZQ0-F9YT9TH7Z-86e0a4e59d)
+(https://slack-files.com/T0351JZQ0-F9XRNMQ66-3dbd1bdb0c)
 
-- [Modern Javascript Explained for Dinosaurs](https://medium.com/@peterxjang/modern-javascript-explained-for-dinosaurs-f695e9747b70)
-- [Making Sense of Front End Build Tools](https://medium.freecodecamp.org/making-sense-of-front-end-build-tools-3a1b3a87043b)
+## ERD
 
-## [License](LICENSE)
-
-1. All content is licensed under a CC­BY­NC­SA 4.0 license.
-1. All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+(https://trello-attachments.s3.amazonaws.com/5a9ea8b6c86bf91db3b0774a/5ab9219fd304cb00f3c163bb/23e103e08179f9313b8efc49eb87dc1c/Image_uploaded_from_i_OS_1.jpg)
