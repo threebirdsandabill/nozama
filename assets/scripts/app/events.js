@@ -69,12 +69,12 @@ const onRemoveCartItem = (event) => {
   const actionDescription = 'updated'
   // get cart items
   const itemId = $(event.target).data('btnremoveitemid')
-  console.log('item to remove', itemId)
   const data = {
     'user': {
       'cart': cart.updateCartArray(itemId, 0, 'remove')
     }
   }
+  console.log('onremoveCartItem data', data)
   api.updateCart(data)
     .then(ui.updateCartSuccess(data, actionDescription))
     .then(onGetUserCart)
