@@ -54,13 +54,17 @@ const onUpdateCartItemQty = (event) => {
   const itemId = $(event.target).data('btnupdateitemid')
   const itemQty = $('#updateqty_' + itemId).val()
   const itemPrice = $('#price_' + itemId).val()
+  const data = {
+    'user': {
+      'cart': cart.updateCartArray(itemId, itemQty, itemPrice, 'update')
+    }
+  }
 
-  const data = cart.updateCartArray(itemId, itemQty, itemPrice, 'update')
   console.log('cart data is onUpdateCartitemQty', data)
 
   api.updateCart(data)
     .then(ui.updateCartSuccess(data, actionDescription))
-    .then(onCartClickOpen)
+    .then(onGetUserCart)
     .catch(ui.updateCartFailure)
 }
 
@@ -68,12 +72,13 @@ const onRemoveCartItem = (event) => {
   event.preventDefault()
   const actionDescription = 'updated'
   // get cart items
-  const itemId = '' // get itemid
-  const itemQty = '' // get qty
-
-  const data = cart.updateCartArray(itemId, itemQty)
-  console.log('cart data is onRemoveItem', data)
-
+  const itemId = $(event.target).data('btnremoveitemid')
+  console.log('item to remove', itemId)
+  const data = {
+    'user': {
+      'cart': cart.updateCartArray(itemId, 0, 'remove')
+    }
+  }
   api.updateCart(data)
     .then(ui.updateCartSuccess(data, actionDescription))
     .then(onGetUserCart)
@@ -93,7 +98,7 @@ const onCartClickOpen = function () {
 }
 
 const onGetUserCart = () => {
-  event.preventDefault()
+  //  event.preventDefault()
   //  console.log('userid for cart', store.user.id)
   api.getUserCart()
     .then(cart.cartTotal)
@@ -212,6 +217,7 @@ const addHandlers = () => {
   $('.get-user').on('click', onGetUserCart)
   $('#carttotal').on('click', onGetTotal)
   $('body').on('click', '.btn-update-item', onUpdateCartItemQty)
+  $('body').on('click', '.btn-remove-item', onRemoveCartItem)
   $('#orderHistory').on('click', displayOrderHistory)
   // add event for updating cart item
   // add event for removing cart item
