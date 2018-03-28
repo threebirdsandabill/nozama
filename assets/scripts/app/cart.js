@@ -3,8 +3,8 @@
 const store = require('../store')
 
 const updateCartArray = function (itemId, itemQty, itemPrice, updateType) {
-  const cartItems = store.user.cart
-  console.log('itemid', itemId)
+  let cartItems = store.user.cart
+  // console.log('itemid', itemId)
   // console.log('in here with cart items of', cartItems)
   const checkIfItemExists = function (itemId) {
     for (let i = 0; i < cartItems.length; i++) {
@@ -20,12 +20,19 @@ const updateCartArray = function (itemId, itemQty, itemPrice, updateType) {
   const indexOfArray = checkIfItemExists(itemId)
   // console.log('index of array is ', indexOfArray)
   if (updateType === 'remove') {
+    console.log('got here')
     if (indexOfArray !== -1 && indexOfArray !== undefined) {
       cartItems.splice(indexOfArray, 1)
       console.log('after remove items', cartItems)
+
+      if (cartItems.length === 0) {
+        console.log('impety')
+        cartItems = 'empty string'
+      }
       return cartItems
     }
   } else {
+    console.log('got there')
     if (indexOfArray === -1 || indexOfArray === undefined) {
       console.log('in the if')
       const newItem = {

@@ -62,24 +62,25 @@ const onUpdateCartItemQty = (event) => {
   console.log('cart data is onUpdateCartitemQty', data)
 
   api.updateCart(data)
-    .then(ui.updateCartSuccess(data, actionDescription))
+    .then((data) => { ui.updateCartSuccess(data, actionDescription) })
     .then(onGetUserCart)
     .catch(ui.updateCartFailure)
 }
 
 const onRemoveCartItem = (event) => {
   event.preventDefault()
-  const actionDescription = 'updated'
+  const actionDescription = 'remove'
   // get cart items
   const itemId = $(event.target).data('btnremoveitemid')
+  //  console.log('remove this: ', itemId)
   const data = {
     'user': {
-      'cart': cart.updateCartArray(itemId, 0, 'remove')
+      'cart': cart.updateCartArray(itemId, 0, 0, 'remove')
     }
   }
   console.log('onremoveCartItem data', data)
   api.updateCart(data)
-    .then(ui.updateCartSuccess(data, actionDescription))
+    .then((data) => { ui.updateCartSuccess(data, actionDescription) })
     .then(onGetUserCart)
     .catch(ui.updateCartFailure)
 }
