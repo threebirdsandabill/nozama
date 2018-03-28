@@ -2,7 +2,7 @@
 
 const store = require('../store')
 
-const updateCartArray = function (itemId, itemQty, updateType) {
+const updateCartArray = function (itemId, itemQty, itemPrice, updateType) {
   const cartItems = store.user.cart
   console.log('itemid', itemId)
 //  console.log('in here with cart items of', cartItems)
@@ -24,7 +24,8 @@ const updateCartArray = function (itemId, itemQty, updateType) {
     console.log('in the if')
     const newItem = {
       itemId: itemId,
-      itemQty: itemQty
+      itemQty: itemQty,
+      itemPrice: itemPrice
     }
     cartItems.push(newItem)
     // console.log('new cart', cartItems)

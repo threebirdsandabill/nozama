@@ -76,11 +76,28 @@ const getUserCartSuccess = function (data) {
   console.log('get user store', store.user.cart)
 }
 
+const makeOrderSuccess = function (data) {
+  $.toast({
+    text: 'Order Number is' + data.order.id,
+    heading: 'Order palced successfully!',
+    icon: 'success',
+    showHideTransition: 'plain',
+    allowToastClose: true,
+    hideAfter: 3000,
+    stack: 5,
+    position: 'top-right',
+    textAlign: 'left',
+    loader: true,
+    loaderBg: '#9EC600'
+  })
+}
+
 module.exports = {
   getItemsSucces,
   updateCartSuccess,
   paymentSuccessful,
   paymentFailure,
   populateCart,
-  getUserCartSuccess
+  getUserCartSuccess,
+  makeOrderSuccess
 }
