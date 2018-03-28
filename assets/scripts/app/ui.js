@@ -71,6 +71,7 @@ const populateCart = function (data) {
 }
 
 const getUserCartSuccess = function (data) {
+  console.log('in getusercart success data is', data)
   store.user.cart = data.user.cart
   console.log('get user store', store.user.cart)
 }

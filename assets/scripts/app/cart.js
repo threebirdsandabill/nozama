@@ -5,11 +5,11 @@ const store = require('../store')
 const updateCartArray = function (itemId, itemQty, updateType) {
   const cartItems = store.user.cart
   console.log('itemid', itemId)
-//  console.log('in here with cart items of', cartItems)
+  // console.log('in here with cart items of', cartItems)
 
   const checkIfItemExists = function (itemId) {
     for (let i = 0; i < cartItems.length; i++) {
-    //  console.log('value of itemId at loop is', cartItems[i].itemId._id)
+    // console.log('value of itemId at loop is', cartItems[i].itemId._id)
     //  console.log('price of itemId at loop is', cartItems[i].itemId.price)
     //  console.log('cart items.length is', cartItems.length)
       if (cartItems[i].itemId._id === itemId) {
@@ -38,7 +38,7 @@ const updateCartArray = function (itemId, itemQty, updateType) {
   }
 }
 
-const cartTotal = function () {
+const cartTotal = function (data) {
   let totalCost = 0
   let totalItems = 0
   const cartItems = store.user.cart
@@ -49,6 +49,7 @@ const cartTotal = function () {
   }
   store.user.totalCost = totalCost.toFixed(2)
   store.user.totalItems = totalItems
+  return data
   // console.log('user store total', store.user.totalCost)
 }
 
