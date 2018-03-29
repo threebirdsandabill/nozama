@@ -68,13 +68,18 @@ const onRemoveCartItem = (event) => {
   const actionDescription = 'remove'
   // get cart items
   const itemId = $(event.target).data('btnremoveitemid')
-  //  console.log('remove this: ', itemId)
   const data = {
     'user': {
       'cart': cart.updateCartArray(itemId, 0, 0, 'remove')
     }
   }
+
+
   api.updateCart(data)
+    .then((d) => {
+    //  console.log('this is whats returned', d)
+      return d
+    })
     .then((data) => { ui.updateCartSuccess(data, actionDescription) })
     .then(onGetUserCart)
     .catch(ui.updateCartFailure)
