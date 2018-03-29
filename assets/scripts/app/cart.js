@@ -3,9 +3,7 @@
 const store = require('../store')
 
 const updateCartArray = function (itemId, itemQty, itemPrice, updateType) {
-
   let cartItems = store.user.cart
-  
   const checkIfItemExists = function (itemId) {
     for (let i = 0; i < cartItems.length; i++) {
       if (cartItems[i].itemId._id === itemId) {
@@ -16,7 +14,7 @@ const updateCartArray = function (itemId, itemQty, itemPrice, updateType) {
   }
   const indexOfArray = checkIfItemExists(itemId)
   if (updateType === 'remove') {
-    console.log('got here')
+    // console.log('got here')
     if (indexOfArray !== -1 && indexOfArray !== undefined) {
       cartItems.splice(indexOfArray, 1)
 
@@ -26,7 +24,6 @@ const updateCartArray = function (itemId, itemQty, itemPrice, updateType) {
       return cartItems
     }
   } else {
-    console.log('got there')
     if (indexOfArray === -1 || indexOfArray === undefined) {
       const newItem = {
         itemId: itemId,
@@ -41,11 +38,11 @@ const updateCartArray = function (itemId, itemQty, itemPrice, updateType) {
     } else if (updateType === 'add') {
       cartItems[indexOfArray].itemQty = parseInt(cartItems[indexOfArray].itemQty) + parseInt(itemQty)
       return cartItems
-//   if (indexOfArray === -1 || indexOfArray === undefined) {
-//     const newItem = {
-//       itemId: itemId,
-//       itemQty: itemQty,
-//       itemPrice: itemPrice
+      //   if (indexOfArray === -1 || indexOfArray === undefined) {
+      //     const newItem = {
+      //       itemId: itemId,
+      //       itemQty: itemQty,
+      //       itemPrice: itemPrice
     }
   }
 }
@@ -61,14 +58,13 @@ const cartTotal = function (data) {
   for (let i = 0; i < cartItems.length; i++) {
     totalItems = totalItems + cartItems[i].itemQty
     totalCost = totalCost + (cartItems[i].itemId.price * cartItems[i].itemQty)
-//     totalItems = totalItems + cartItems[i].itemId.itemQty
-//     totalCost = totalCost + cartItems[i].itemId.price
+    //     totalItems = totalItems + cartItems[i].itemId.itemQty
+    //     totalCost = totalCost + cartItems[i].itemId.price
   }
 
   store.user.totalCost = totalCost.toFixed(2)
   store.user.totalItems = totalItems
   return data
-
 }
 
 module.exports = {
