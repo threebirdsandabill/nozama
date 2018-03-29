@@ -74,7 +74,6 @@ const onRemoveCartItem = (event) => {
     }
   }
 
-
   api.updateCart(data)
     .then((d) => {
     //  console.log('this is whats returned', d)
@@ -196,7 +195,7 @@ const convertCartToOrder = function (data) {
     // .then(cart.cartTotal)
     // .then(ui.populateCart)
     // .catch(ui.populateCartError)
-    .catch(console.error)
+    .catch(ui.convertCartToOrderFailure)
 }
 
 const handler = StripeCheckout.configure({

@@ -55,6 +55,24 @@ const onSignOut = function () {
     .catch(ui.signOutFailure)
 }
 
+const onCloseSignUpModal = function () {
+  $('#signUpForm').each(function () {
+    this.reset()
+  })
+}
+
+const onCloseSignInModal = function () {
+  $('#signInForm').each(function () {
+    this.reset()
+  })
+}
+
+const onCloseChangePassword = function () {
+  $('#changePasswordForm').each(function () {
+    this.reset()
+  })
+}
+
 const addHandlers = () => {
   $('#signUp').on('click', onShowSignUpModal)
   $('#signUpForm').on('submit', onSignUp)
@@ -64,6 +82,9 @@ const addHandlers = () => {
   $('#changePasswordForm').on('submit', onChangePassword)
   $('#signOut').on('click', onSignOut)
   $('#signUpDivert').on('click', onDivertSignUpModal)
+  $('#closeSignUpModal').on('click', onCloseSignUpModal)
+  $('#closeSignInModal').on('click', onCloseSignInModal)
+  $('#closeChangePassword').on('click', onCloseChangePassword)
 }
 
 module.exports = {
