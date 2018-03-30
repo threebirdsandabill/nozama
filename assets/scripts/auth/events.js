@@ -46,13 +46,31 @@ const onChangePassword = function (event) {
     .catch(ui.onChangePasswordFailure)
 }
 
-const onSignOut = function () {
+const onSignOut = function (event) { // broke in Firefox becuase never passed event
   event.preventDefault()
   const data = getFormFields(this)
   api.signOut(data)
     .then(ui.onSignOutSuccess)
     .then(() => { store.user = undefined })
     .catch(ui.signOutFailure)
+}
+
+const onCloseSignUpModal = function () {
+  $('#signUpForm').each(function () {
+    this.reset()
+  })
+}
+
+const onCloseSignInModal = function () {
+  $('#signInForm').each(function () {
+    this.reset()
+  })
+}
+
+const onCloseChangePassword = function () {
+  $('#changePasswordForm').each(function () {
+    this.reset()
+  })
 }
 
 const addHandlers = () => {
@@ -64,6 +82,9 @@ const addHandlers = () => {
   $('#changePasswordForm').on('submit', onChangePassword)
   $('#signOut').on('click', onSignOut)
   $('#signUpDivert').on('click', onDivertSignUpModal)
+  $('#closeSignUpModal').on('click', onCloseSignUpModal)
+  $('#closeSignInModal').on('click', onCloseSignInModal)
+  $('#closeChangePassword').on('click', onCloseChangePassword)
 }
 
 module.exports = {

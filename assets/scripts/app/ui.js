@@ -11,6 +11,22 @@ const getItemsSucces = (data) => {
   $('#store-items').html(showItemGrid({ items: data.items }))
 }
 
+const convertCartToOrderFailure = function () {
+  $.toast({
+    text: 'There was a problem placing your order',
+    heading: 'Error!',
+    icon: 'error',
+    showHideTransition: 'plain',
+    allowToastClose: true,
+    hideAfter: 3000,
+    stack: 5,
+    position: 'top-left',
+    textAlign: 'left',
+    loader: true,
+    loaderBg: '#F09C40'
+  })
+}
+
 const paymentSuccessful = function (data) {
   $('#addToCartModal').modal('hide')
   $.toast({
@@ -90,7 +106,6 @@ const makeOrderSuccess = function (data) {
     loader: true,
     loaderBg: '#9EC600'
   })
-
 }
 
 const orderHistorySuccess = function (data) {
@@ -112,5 +127,6 @@ module.exports = {
   getUserCartSuccess,
   makeOrderSuccess,
   orderHistorySuccess,
-  orderHistoryFailure
+  orderHistoryFailure,
+  convertCartToOrderFailure
 }

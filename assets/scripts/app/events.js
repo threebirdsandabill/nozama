@@ -74,7 +74,6 @@ const onRemoveCartItem = (event) => {
     }
   }
 
-
   api.updateCart(data)
     .then((d) => {
     //  console.log('this is whats returned', d)
@@ -85,7 +84,7 @@ const onRemoveCartItem = (event) => {
     .catch(ui.updateCartFailure)
 }
 
-const onCartClickOpen = function () {
+const onCartClickOpen = function (event) { // this broke in Firefox because we didn't pass 'event' as a var.
   event.preventDefault()
   if (store.user !== undefined) {
     api.getUserCart()
@@ -196,7 +195,7 @@ const convertCartToOrder = function (data) {
     // .then(cart.cartTotal)
     // .then(ui.populateCart)
     // .catch(ui.populateCartError)
-    .catch(console.error)
+    .catch(ui.convertCartToOrderFailure)
 }
 
 const handler = StripeCheckout.configure({
