@@ -84,7 +84,7 @@ const onRemoveCartItem = (event) => {
     .catch(ui.updateCartFailure)
 }
 
-const onCartClickOpen = function () {
+const onCartClickOpen = function (event) { // this broke in Firefox because we didn't pass 'event' as a var.
   event.preventDefault()
   if (store.user !== undefined) {
     api.getUserCart()

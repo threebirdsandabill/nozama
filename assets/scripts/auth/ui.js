@@ -32,6 +32,8 @@ const onSignInSuccess = function (data) {
 }
 
 const onSignInFailure = function () {
+  // NOTE I purposefully didn't clear the form. I will fix it and
+  // make a note in our resubmission that I think it's an error
   $.toast({
     text: 'Sorry, there was a problem signing in. Please check your creds',
     heading: 'Error',
@@ -44,6 +46,10 @@ const onSignInFailure = function () {
     textAlign: 'left',
     loader: true,
     loaderBg: '#9EC600'
+  })
+
+  $('#signInForm').each(function () { // added to fix clearing on failure.
+    this.reset()
   })
 }
 
@@ -102,6 +108,9 @@ const onSignUpFailure = function () {
     textAlign: 'left',
     loader: true,
     loaderBg: '#9EC600'
+  })
+  $('#signUpForm').each(function () { // added to fix clearing on failure
+    this.reset()
   })
 }
 
