@@ -1,6 +1,9 @@
 # NOZAMA
 - FRONT-END REPOSITORY: (https://github.com/threebirdsandabill/nozama)
 - BACKEND REPOSITORY:  (https://github.com/threebirdsandabill/nozama-api)
+- FRONT END CLIENT: (https://threebirdsandabill.github.io/nozama/)
+- BACKEND DEPLOYED: (https://nozama-api.herokuapp.com/)
+
 
 # Planned Objective
 

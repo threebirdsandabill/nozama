@@ -46,7 +46,7 @@ const onChangePassword = function (event) {
     .catch(ui.onChangePasswordFailure)
 }
 
-const onSignOut = function () {
+const onSignOut = function (event) { // broke in Firefox becuase never passed event
   event.preventDefault()
   const data = getFormFields(this)
   api.signOut(data)
